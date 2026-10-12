@@ -1,0 +1,112 @@
+/* Ustawienie border-boxa dla wszystkich elementów */
+* {
+    box-sizing: border-box;
+}
+
+/* body -> odstępy i kolor tła (brak białej otoczki) */
+body {
+    margin: 0;
+    background-color: white;
+}
+
+/* .układ-strony -> tworzenie siatki i utworzenie trzech kolumn (lewa i prawa, środkowa biała); wyświetlanie całej strony oraz białe tło */
+.uklad-strony {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1600px) minmax(0, 1fr);
+    min-height: 100vh;
+    background-color: white;
+}
+
+/* .lewa-kolumna, .prawa-kolumna -> szarawe tło + warunek z 0-szerokością */
+.lewa-kolumna,
+.prawa-kolumna {
+    background-color: #eaecf0;
+    min-width: 0;
+}
+
+/* .tresc-strony -> tło białe; warunek z 0-szerokością; bordery oddzielające boxy; odstępy  */
+.tresc-strony {
+    background-color: white;
+    min-width: 0;
+    border-left: 1px solid #a2a9b1;
+    border-right: 1px solid #a2a9b1;
+    padding: 15px 20px 15px;
+}
+
+/* .nagłówek -> ustawienie obok siebie w jednym wierszu; środkowanie; gap przedstawia przerwę pomiędzy itemami */
+.naglowek {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* .menu-button -> wielkość kresek; kolor tła na jasno-szary; zmiana kursora na funkcjonowalny; ramka wokół; zaokrąglenie ramki; odstęp od lewej */
+.menu-button {
+    font-size: 30px;
+    background-color: lightgray;
+    cursor: pointer;
+    border: solid 2px black;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+/* .logo -> szerokość; wysokość; dopasowanie obrazu; odstęp od dołu */
+.logo {
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* .wyszukiwarka -> ustawienie po kolei wszystkich elementów wyszukiwarki; środkowanie; ustawianie szerokości na 500px lub 100% dostępnej wartości; min. szerokość; wysokość; ramka; tło; odstęp od lewej */
+.wyszukiwarka {
+    display: flex;
+    align-items: center;
+    width: min(500px, 100%);
+    min-width: 0;
+    height: 40px;
+    border: 1px solid #a2a9b1;
+    background-color: white;
+    margin-left: 20px;
+}
+
+/* .wyszukiwarka:focus-within -> podświetla się na kolor niebieskawy, gdy ktoś na to kliknie; tworzy się cień na 1px */
+.wyszukiwarka:focus-within {
+    border-color: #36c;
+    box-shadow: inset 0 0 0 1px #36c;
+}
+
+/* .wyszukiwarka input -> od lewej do prawej tekst; minimalna szerokość to 0; wysokość zajmuje 100% ramki; odstępy boczne; usunięcie ramki; brak dodatkowej obramówki; wielkość czcionki na 14px */
+.wyszukiwarka input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* .wyszukiwarka button -> button zajmuje całą wyszukiwarkę (wysokość); odstępy boczne; usuwanie ramki; dodanie lewej ramki; tło; kolor tekstu; funkcjonalny kursor */
+.wyszukiwarka button {
+    height: 100%;
+    padding: 0 12px;
+    border: none;
+    border-left: 1px solid #a2a9b1;
+    background-color: #f8f9fa;
+    color: #202122;
+    cursor: pointer;
+}
+
+/* .wyszukiwarka button:hover -> zmienia kolor tła na lekko szarawy tam gdzie jest lupa */
+.wyszukiwarka button:hover {
+    background-color: #eaecf0;
+}
+
+/* .konto -> automatyczny odstęp od lewej; ustawienie po kolei; odstęp 30px; nowrap, aby link się nie zawijał do kolejnych wierszy*/
+.konto {
+    margin-left: auto;
+    display: flex;
+    gap: 30px;
+    white-space: nowrap;
+}

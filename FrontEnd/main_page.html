@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Nazwa okna -->
+    <title>Dynamopedia</title>
+
+    <!-- web-icon -->
+    <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
+
+    <!-- połączenie z CSS -->
+    <link rel="stylesheet" href="style_program.css">
+
+    <!-- połączenie z ikonkami -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <!-- klasa zarządzająca układem strony (podzielenie na 3 kolumny) -->
+    <div class="uklad-strony">
+
+        <!-- klasa zarządzająca lewą kolumną -->
+        <aside class="lewa-kolumna"></aside>
+
+        <!-- klasa zarządzająca ułożeniem treści na stronie -->
+        <div class="tresc-strony">
+
+            <!-- klasa zarządzająca nagłówkiem -->
+            <header class="naglowek">
+
+                <!-- klasa zarządzająca guzikiem z trzema kreskami (menu); aria-label daje tekst na wszelki wypadek -->
+                <button class="menu-button" aria-label="Otwórz menu">
+                    ☰
+                </button>
+
+                <!-- zdjęcie loga -->
+                <img src="Zdjęcia/Logo_strony.png"
+                     alt="Logo Dynamopedii"
+                     class="logo">
+
+                <!-- klasa zarządzająca wyszukiwarką -->
+                <div class="wyszukiwarka">
+                    <input type="search"
+                           placeholder="Przeszukaj Dynamopedię">
+
+                    <!-- dodanie przycisku z lupą -->
+                    <button type="button" aria-label="Szukaj">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+
+                <!-- klasa zarządzająca kontem -->
+                <div class="konto">
+                    <a id="utworzenie-k" href="">Utwórz konto</a>
+                    <a id="logowanie-k" href="">Zaloguj się</a>
+                </div>
+
+            </header>
+
+            <main>
+                <hr>
+            </main>
+
+            <footer>
+
+            </footer>
+
+        </div>
+
+        <!-- klasa zarządzająca prawą kolumną -->
+        <aside class="prawa-kolumna"></aside>
+
+    </div>
+</body>
+</html>
