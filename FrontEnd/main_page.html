@@ -14,6 +14,9 @@
     <!-- połączenie z CSS -->
     <link rel="stylesheet" href="style_program.css">
 
+    <!-- połączenie z JS -->
+    <script src="scripts.js" defer></script>
+
     <!-- połączenie z ikonkami -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -28,23 +31,29 @@
         <!-- klasa zarządzająca ułożeniem treści na stronie -->
         <div class="tresc-strony">
 
-            <!-- klasa zarządzająca nagłówkiem -->
+            <!-- (NAGŁÓWEK)klasa zarządzająca nagłówkiem -->
             <header class="naglowek">
 
-                <!-- klasa zarządzająca guzikiem z trzema kreskami (menu); aria-label daje tekst na wszelki wypadek -->
-                <button class="menu-button" aria-label="Otwórz menu">
-                    ☰
-                </button>
+                <!-- klasa zarządzająca guzikiem z trzema kreskami (menu) -->
+                <div class="menu-kontener">
+                    <button class="menu-button" id="menu-toggle" title="Menu strony">
+                        ☰
+                    </button>
+
+                    <!-- panel, który się wyświetla po otawrciu menu -->
+                    <div class="panel-menu" id="panel-menu">
+                        <a href="main_page.html" title="Przejdź na stronę główną">Strona główna</a>
+                        <a href="main_page.html" title="Zobacz ostatnie zmiany">Ostatnie zmiany</a>
+                        <a href="main_page.html" title="Przejdź na losową stronę">Losowa strona</a>
+                    </div>
+                </div>
 
                 <!-- zdjęcie loga -->
-                <img src="Zdjęcia/Logo_strony.png"
-                     alt="Logo Dynamopedii"
-                     class="logo">
+               <a href="main_page.html"><img src="Zdjęcia/Logo_strony.png" alt="Logo Dynamopedii" class="logo"></a>
 
                 <!-- klasa zarządzająca wyszukiwarką -->
                 <div class="wyszukiwarka">
-                    <input type="search"
-                           placeholder="Przeszukaj Dynamopedię">
+                    <input type="search" placeholder="Przeszukaj Dynamopedię" title="Przeszukaj Dynamopedię">
 
                     <!-- dodanie przycisku z lupą -->
                     <button type="button" aria-label="Szukaj">
@@ -54,14 +63,122 @@
 
                 <!-- klasa zarządzająca kontem -->
                 <div class="konto">
-                    <a id="utworzenie-k" href="">Utwórz konto</a>
-                    <a id="logowanie-k" href="">Zaloguj się</a>
+                    <a id="utworzenie-k" href="main_page.html" title="Utwórz konto w Dynamopedii">Utwórz konto</a>
+                    <a id="logowanie-k" href="main_page.html" title="Zaloguj się na konto w Dynamopedii">Zaloguj się</a>
                 </div>
 
             </header>
+            
+            <!-- Navigation bar -->
+            <div class="obszar-nawigacji">
 
-            <main>
+                <!-- Linia oddzielająca nagłówek od navbara -->
                 <hr>
+
+                <!-- klasa zarządzająca navbarem --> 
+                <nav class="navbar">
+                    <ul>
+                        <!-- wybór strony głównej -->
+                        <li>
+                            <a href="main_page.html" title="Przejdź do strony głównej">Strona główna</a>
+                        </li>
+
+                        <!-- wybór strony: dyskusja -->
+                        <li>
+                            <a href="main_page.html" title="Dyskusje">Dyskusja</a>
+                        </li>
+
+                        <!-- klasa, dzięki której elementy będą się wyświetlać od prawej strony, wybór strony: czytaj -->
+                        <li class="od-prawej">
+                            <a href="main_page.html" title="Przejdź do czytania artykułu na obecnej stronie">Czytaj</a>
+                        </li>
+
+                        <!-- wybór strony: kod źródłowy -->
+                        <li>
+                            <a href="main_page.html" title="Przejdź do kodu źródłowego strony">Kod źródłowy</a>
+                        </li>
+
+                        <!-- wybór strony: wyświetl historię -->
+                        <li>
+                            <a href="main_page.html" title="Starsze wersje tej strony">Wyświetl historię</a>
+                        </li>
+
+                        <!-- Wybór przycisku: Narzędzia -->
+                        <li>
+                            <button class="narzedzia-button">Narzędzia</button>
+                        </li>
+
+                        <!-- Wybór przycisku, który otwiera menu-wyglądu -->
+                        <li>
+                            <button class="wyglad-button" id="wyglad-toggle"><i class="bi bi-eye"></i>Wygląd</button>
+                        </li>
+                    </ul>
+                </nav>
+                <hr>
+            </div>
+
+                <!-- Panel wyglądu -->
+                <aside class="panel-wygladu" id="panel-wygladu">
+                    <div class="panel-naglowek">
+                        <h3>Wygląd</h3>
+
+                        <!-- guzik do zamknięcia panelu wyglądu -->
+                        <button id="zamknij-wyglad">
+                            x
+                        </button>
+                    </div>
+
+                    <hr>
+
+                    <!-- Wybieranie wielkości tekstu strony -->
+                    <h4>Rozmiar tekstu</h4>
+                    <label>
+                        <input type="radio" name="rozmiar" value="maly">
+                        Mały
+                    </label>
+
+                    <label>
+                        <input type="radio" name="rozmiar" value="standardowy" checked>
+                        Standardowy
+                    </label>
+
+                    <label>
+                        <input type="radio" name="rozmiar" value="duzy">
+                        Duży
+                    </label>
+
+                    <hr>
+
+                    <!-- Wybieranie szerokości strony -->
+                    <h4>Szerokość</h4>
+                    <label>
+                        <input type="radio" name="szerokosc" value="standardowa" checked>
+                        Standardowa
+                    </label>
+
+                    <label>
+                        <input type="radio" name="szerokosc" value="szeroka">
+                        Szeroka
+                    </label>
+
+                    <hr>
+
+                    <!-- Wybieranie koloru tła strony -->
+                    <h4>Kolor</h4>
+                    <label>
+                        <input type="radio" name="kolor" value="jasny" checked>
+                        Jasny
+                    </label>
+
+                    <label>
+                        <input type="radio" name="kolor" value="ciemny">
+                        Ciemny
+                    </label>
+                </aside>
+
+            <!-- GŁÓWNA STRONA -->
+            <main>
+
             </main>
 
             <footer>

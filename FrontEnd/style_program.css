@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-/* body -> odstępy i kolor tła (brak białej otoczki) */
+/* body -> usuwa domyślny margines wokół strony i ustawia białe tło strony */
 body {
     margin: 0;
     background-color: white;
@@ -17,14 +17,14 @@ body {
     background-color: white;
 }
 
-/* .lewa-kolumna, .prawa-kolumna -> szarawe tło + warunek z 0-szerokością */
+/* .lewa-kolumna, .prawa-kolumna -> szarawe tło i możliwość zmniejszenia szerokości do 0 */
 .lewa-kolumna,
 .prawa-kolumna {
     background-color: #eaecf0;
     min-width: 0;
 }
 
-/* .tresc-strony -> tło białe; warunek z 0-szerokością; bordery oddzielające boxy; odstępy  */
+/* .tresc-strony -> tło białe; warunek z 0-szerokością (to samo co w .lewa-kolumna, .prawa-kolumna); bordery oddzielające boxy; odstępy  */
 .tresc-strony {
     background-color: white;
     min-width: 0;
@@ -49,6 +49,44 @@ body {
     border-radius: 5px;
     margin-left: 20px;
 }
+
+/* .menu-kontener -> pozycja kontenera głównego menu */
+.menu-kontener {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* .panel-menu -> pozycja wyświetlania się okna menu */
+.panel-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 230px;
+    background: white;
+    border: 1px solid #a2a9b1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+/* .panel-menu.otwarte -> gdy otwieramy menu, wyświetla blok */
+.panel-menu.otwarte {
+    display: block;
+}
+
+/* .panel-menu a -> wyświetla tekst w boxie, gdy otworzymy */
+.panel-menu a {
+    display: block;
+    padding: 12px 16px;
+    color: black;
+    text-decoration: none;
+}
+
+/* .panel-menu a:hover -> zmiana koloru tła, gdy najedziemy na tekst */
+.panel-menu a:hover {
+    background-color: #eaecf0;
+}
+
 
 /* .logo -> szerokość; wysokość; dopasowanie obrazu; odstęp od dołu */
 .logo {
@@ -109,4 +147,117 @@ body {
     display: flex;
     gap: 30px;
     white-space: nowrap;
+}
+
+/* .navbar ul -> wyświtlanie elementów w navigation bar */
+.navbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* .navbar .od-prawej -> wyświetlanie pewnych elementów od prawej strony */
+.navbar .od-prawej {
+    margin-left: auto;
+}
+
+/* .navbar a -> dekoracja tekstu w navbarze */
+.navbar a {
+    display: block;
+    padding: 15px;
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+
+/* .wyglad-button, .narzedzia-button -> dekoracja przycisków */
+.wyglad-button,
+.narzedzia-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 15px;
+    background: white;
+    border: none;
+    color: black;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* .wyglad-button:hover, .narzedzia-button:hover -> wygląd przycisków gdy się hoveruje myszką */
+.wyglad-button:hover,
+.narzedzia-button:hover {
+    background-color: rgba(224, 211, 211, 0.514);
+}
+
+/* .navbar a::after -> utworzenie animacji w navbarze */
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 7px;
+    height: 1px;
+    background-color: black;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+/* .navbar a:hover::after -> gdy najedziesz wykona się animacja */
+.navbar a:hover::after {
+    transform: scaleX(1);
+}
+
+/* .panel-wygladu -> określa wygląd panelu oraz umiejscowienie */
+.panel-wygladu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    max-width: 100%;
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: white;
+    color: #202122;
+    border-left: 1px solid #a2a9b1;
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+    display: none;
+}
+
+/* .panel-wygladu.otwarty -> gdy otwieramy panel, to pojawia się box z tekstem */
+.panel-wygladu.otwarty {
+    display: block;
+}
+
+/* .panel-naglowek -> wyświetlanie w odpiowiednim miejscu tekstu */
+.panel-naglowek {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* .panel-naglowek h3 -> usuwamy domyślny margines */
+.panel-naglowek h3 {
+    margin: 0;
+}
+
+/* #zamknij-wyglad -> gdy zamykamy okno klikając w "x", to wszystko znika */
+#zamknij-wyglad {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* .panel-wygladu label -> ustawiamy pod sobą opcje do wyboru w boxie panelu wyglądu */
+.panel-wygladu label {
+    display: block;
+    margin: 12px 0;
+    cursor: pointer;
 }
