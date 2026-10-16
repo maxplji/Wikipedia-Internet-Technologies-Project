@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Nazwa okna -->
+    <title>Utwórz nowe konto - Dynamopedia</title>
+
+    <!-- web-icon -->
+    <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
+
+    <!-- połączenie z CSS -->
+    <link rel="stylesheet" href="style_program.css">
+
+    <!-- połączenie z JS -->
+    <script src="scripts.js" defer></script>
+
+    <!-- połączenie z ikonkami -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="uklad-strony">
+
+        <!-- klasa zarządzająca lewą kolumną -->
+        <aside class="lewa-kolumna"></aside>
+
+        <!-- klasa zarządzająca ułożeniem treści na stronie -->
+        <div class="tresc-strony">
+
+        <header>
+            <div id="naglowek"></div>
+
+            <!-- skrypt tworzący nagłówek -->
+            <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
+
+                const przyciskMenu = document.getElementById("menu-toggle");
+                const panelMenu = document.getElementById("panel-menu");
+
+                przyciskMenu.addEventListener("click", function () {
+                    panelMenu.classList.toggle("otwarte");
+                });
+            });
+            </script>
+
+            <hr>
+
+        </header>
+
+        <!-- main strony rejestracji -->
+        <main>
+
+            <!-- sekcja formularza -->
+            <section class="formularz-rejestracji">
+                <h1>Utwórz konto</h1>
+
+                <p class="opis-rejestracji">
+                    Utwórz konto w Dynamopedii, aby korzystać
+                    z dodatkowych funkcji i rozwijać encyklopedię.
+                </p>
+
+                <!-- rozpoczęcie formularza rejestracji -->
+                <form action="#" method="post">
+
+                    <!-- nazwa użytkownika -->
+                    <div class="pole-formularza">
+                        <label for="nazwa-uzytkownika">
+                            Nazwa użytkownika
+                        </label>
+                        <input
+                            type="text"
+                            id="nazwa-uzytkownika"
+                            name="username"
+                            autocomplete="username"
+                            required
+                            placeholder="Podaj nazwę użytkownika"
+                        >
+                        <small class="pomoc-formularza">
+                            Ta nazwa będzie widoczna dla innych użytkowników.
+                        </small>
+                    </div>
+
+                    <!-- hasło -->
+                    <div class="pole-formularza">
+                        <label for="haslo">Hasło</label>
+                        <input
+                            type="password" 
+                            id="haslo"
+                            name="password"
+                            autocomplete="new-password"
+                            required
+                            placeholder="Podaj hasło"
+                        >
+                    </div>
+
+                    <!-- powtórz hasło -->
+                    <div class="pole-formularza">
+                        <label for="powtorz-haslo">
+                            Powtórz hasło
+                        </label>
+                        <input
+                            type="password"
+                            id="powtorz-haslo"
+                            name="password_confirmation"
+                            autocomplete="new-password"
+                            required
+                            placeholder="Powtórz hasło"
+                        >
+                    </div>
+
+                    <!-- email -->
+                    <div class="pole-formularza">
+                        <label for="email">Adres e-mail</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            placeholder="Podaj e-mail"
+                        >
+                    </div>
+
+                    <button class="przycisk-rejestracji" type="submit">
+                        Utwórz konto
+                    </button>
+
+                </form>
+
+                <p class="informacja-logowanie">
+                    Masz już konto?
+                    <a href="account_login.html">Zaloguj się</a>
+                </p>
+            </section>
+        </main>
+
+
+        </div>
+
+        <!-- klasa zarządzająca prawą kolumną -->
+        <aside class="prawa-kolumna"></aside>
+    
+    </div>
+
+</body>
+</html>

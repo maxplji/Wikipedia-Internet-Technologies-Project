@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Nazwa okna -->
+    <title>Zaloguj się do konta - Dynamopedia</title>
+
+    <!-- web-icon -->
+    <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
+
+    <!-- połączenie z CSS -->
+    <link rel="stylesheet" href="style_program.css">
+
+    <!-- połączenie z JS -->
+    <script src="scripts.js" defer></script>
+
+    <!-- połączenie z ikonkami -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="uklad-strony">
+
+        <!-- klasa zarządzająca lewą kolumną -->
+        <aside class="lewa-kolumna"></aside>
+
+        <!-- klasa zarządzająca ułożeniem treści na stronie -->
+        <div class="tresc-strony">
+
+        <header>
+            <div id="naglowek"></div>
+
+            <!-- skrypt tworzący nagłówek -->
+            <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
+
+                const przyciskMenu = document.getElementById("menu-toggle");
+                const panelMenu = document.getElementById("panel-menu");
+
+                przyciskMenu.addEventListener("click", function () {
+                    panelMenu.classList.toggle("otwarte");
+                });
+            });
+            </script>
+
+            <hr>
+
+        </header>
+
+        <!-- Main strony logowania -->
+        <main>
+
+            <!-- sekcja formularza -->
+            <section class="formularz-logowania">
+
+                <h1>Zaloguj się</h1>
+
+                <p class="opis-logowania">
+                    Zaloguj się do swojego konta w Dynamopedii.
+                </p>
+
+                <!-- Początek formularza -->
+                <form action="#" method="post">
+
+                    <!-- email -->
+                    <div class="pole-formularza">
+                        <label for="email">Adres e-mail</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            required
+                            placeholder="Podaj e-mail"
+                        >
+                    </div>
+
+                    <!-- hasło -->
+                    <div class="pole-formularza">
+                        <label for="haslo">Hasło</label>
+                        <input
+                            type="password"
+                            id="haslo"
+                            name="password"
+                            autocomplete="current-password"
+                            required
+                            placeholder="Podaj hasło"
+                        >
+                    </div>
+
+                    <!-- Opcja zapamiętania hasła -->
+                    <label class="opcja-zapamietania">
+                        <input
+                            type="checkbox"
+                            name="zapamietaj"
+                        >
+                        Zapamiętaj mnie
+                    </label>
+
+                    <button class="przycisk-logowania" type="submit">
+                        Zaloguj się
+                    </button>
+
+                </form>
+
+                <p class="informacja-rejestracja">
+                    Nie masz jeszcze konta?
+                    <a href="account_creation.html">Utwórz konto</a>
+                </p>
+
+            </section>
+        </main>
+
+        </div>
+        
+        <!-- klasa zarządzająca prawą kolumną -->
+        <aside class="prawa-kolumna"></aside>
+    
+    </div>
+
+</body>
+</html>

@@ -7,6 +7,7 @@
 body {
     margin: 0;
     background-color: white;
+    font-family: Arial, sans-serif;
 }
 
 /* .układ-strony -> tworzenie siatki i utworzenie trzech kolumn (lewa i prawa, środkowa biała); wyświetlanie całej strony oraz białe tło */
@@ -260,4 +261,144 @@ body {
     display: block;
     margin: 12px 0;
     cursor: pointer;
+}
+
+/* .formularz-rejestracji -> wygląd boxa */
+.formularz-rejestracji {
+    max-width: 520px;
+    margin: 35px auto;
+    padding: 28px;
+    border: 1px solid #a2a9b1;
+    background: white;
+}
+
+/* .formularz-rejestracji h1 -> ustawienie h1 */
+.formularz-rejestracji h1 {
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+/* .opis-rejestracji -> ustawienie wyglądu opisu rejestracji */
+.opis-rejestracji {
+    color: #54595d;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* .pole-formularza -> pole boxów do wpisywania dla każdej opcji */
+.pole-formularza {
+    margin-bottom: 20px;
+}
+
+/* .pole-formularza label -> wygląd boxów do wpisywania */
+.pole-formularza label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* .pole-formularza input -> wygląd inputu w formularzu */
+.pole-formularza input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #72777d;
+    border-radius: 2px;
+    font: inherit;
+}
+
+/* .pole-formularza input:focus -> Gdy okno kliknięte to tworzy otoczkę */
+.pole-formularza input:focus {
+    outline: 2px solid #36c;
+    outline-offset: 1px;
+}
+
+/* .pomoc-formularza -> mała informacja pod nazwą użytkownika */
+.pomoc-formularza {
+    display: block;
+    color: #54595d;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* .przycisk-rejestracji -> modelowanie przycisku rejestracji */
+.przycisk-rejestracji {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #36c;
+    border-radius: 2px;
+    background: #36c;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* .przycisk-rejestracji:hover -> gdy hoverujemy na przycisk zmienia się na niebiesko */
+.przycisk-rejestracji:hover {
+    background: #2a4b8d;
+}
+
+/* .informacja-logowanie -> informacja na dole, wyśrodkowana */
+.informacja-logowanie {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* .formularz-logowania -> wygląd boxa */
+.formularz-logowania {
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 28px;
+    border: 1px solid #a2a9b1;
+    background: white;
+}
+
+/* .formularz-logowania h1 -> ustawienie h1 */
+.formularz-logowania h1 {
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+/* .opis-logowania -> ustawienie wyglądu opisu rejestracji */
+.opis-logowania {
+    color: #54595d;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* .opcja-zapamietania -> mały checkbox, umieszczony pod hasłem */
+.opcja-zapamietania {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    font-size: 14px;
+}
+
+/* .przycisk-logowania -> modelowanie przycisku logowania */
+.przycisk-logowania {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #36c;
+    border-radius: 2px;
+    background: #36c;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* .przycisk-logowania:hover -> gdy hoverujemy na przycisk to zmienia się kolor */
+.przycisk-logowania:hover {
+    background: #2a4b8d;
+}
+
+/* .informacja-rejestracja -> informacja na dolnym środku formularza */
+.informacja-rejestracja {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 14px;
 }

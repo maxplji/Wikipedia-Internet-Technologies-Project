@@ -32,42 +32,22 @@
         <div class="tresc-strony">
 
             <!-- (NAGŁÓWEK)klasa zarządzająca nagłówkiem -->
-            <header class="naglowek">
+            <div id="naglowek"></div>
 
-                <!-- klasa zarządzająca guzikiem z trzema kreskami (menu) -->
-                <div class="menu-kontener">
-                    <button class="menu-button" id="menu-toggle" title="Menu strony">
-                        ☰
-                    </button>
+            <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
 
-                    <!-- panel, który się wyświetla po otawrciu menu -->
-                    <div class="panel-menu" id="panel-menu">
-                        <a href="main_page.html" title="Przejdź na stronę główną">Strona główna</a>
-                        <a href="main_page.html" title="Zobacz ostatnie zmiany">Ostatnie zmiany</a>
-                        <a href="main_page.html" title="Przejdź na losową stronę">Losowa strona</a>
-                    </div>
-                </div>
+                const przyciskMenu = document.getElementById("menu-toggle");
+                const panelMenu = document.getElementById("panel-menu");
 
-                <!-- zdjęcie loga -->
-               <a href="main_page.html"><img src="Zdjęcia/Logo_strony.png" alt="Logo Dynamopedii" class="logo"></a>
-
-                <!-- klasa zarządzająca wyszukiwarką -->
-                <div class="wyszukiwarka">
-                    <input type="search" placeholder="Przeszukaj Dynamopedię" title="Przeszukaj Dynamopedię">
-
-                    <!-- dodanie przycisku z lupą -->
-                    <button type="button" aria-label="Szukaj">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-
-                <!-- klasa zarządzająca kontem -->
-                <div class="konto">
-                    <a id="utworzenie-k" href="main_page.html" title="Utwórz konto w Dynamopedii">Utwórz konto</a>
-                    <a id="logowanie-k" href="main_page.html" title="Zaloguj się na konto w Dynamopedii">Zaloguj się</a>
-                </div>
-
-            </header>
+                przyciskMenu.addEventListener("click", function () {
+                    panelMenu.classList.toggle("otwarte");
+                });
+            });
+            </script>
             
             <!-- Navigation bar -->
             <div class="obszar-nawigacji">

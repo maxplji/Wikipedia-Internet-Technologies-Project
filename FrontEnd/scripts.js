@@ -27,3 +27,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+// Zalogowany użytkownik (znika login oraz tworzenie konta -> pojawia się użytkownik)
+function pokazZalogowanegoUzytkownika(nick) {
+    const utworzKonto = document.getElementById("utworzenie-k");
+    const zaloguj = document.getElementById("logowanie-k");
+    const nickElement = document.getElementById("nick-uzytkownika");
+
+    if (!utworzKonto || !zaloguj || !nickElement) {
+        return;
+    }
+
+    utworzKonto.hidden = true;
+    zaloguj.hidden = true;
+
+    nickElement.textContent = nick;
+    nickElement.hidden = false;
+}
