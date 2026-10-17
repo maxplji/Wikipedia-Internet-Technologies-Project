@@ -138,6 +138,19 @@
             </section>
         </main>
 
+        <!-- Klasa zarządzająca stopką -->
+        <div id="stopka"></div>
+
+        <script>
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("stopka").innerHTML = html;
+                })
+                .catch(error => {
+                    console.error("Nie udało się wczytać stopki:", error);
+                });
+        </script>
 
         </div>
 

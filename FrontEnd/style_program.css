@@ -14,6 +14,7 @@ body {
 .uklad-strony {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1600px) minmax(0, 1fr);
+    grid-template-rows: minmax(100vh, auto);
     min-height: 100vh;
     background-color: white;
 }
@@ -401,4 +402,44 @@ body {
     margin-top: 22px;
     text-align: center;
     font-size: 14px;
+}
+
+/* .stopka -> Stopka Dynamopedii */
+.stopka {
+    margin-top: 40px;
+    padding: 20px 0 15px;
+    border-top: 1px solid #a2a9b1;
+    color: #202122;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* .stopka-informacje -> margines stopki */
+.stopka-informacje {
+    margin-bottom: 12px;
+}
+
+/* .stopka-linki -> wyświetlanie linków */
+.stopka-linki {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-bottom: 12px;
+}
+
+/* .stopka-linki a -> kolor linków */
+.stopka-linki a {
+    color: #36c;
+    text-decoration: none;
+}
+
+/* .stopka-linki a:hover -> pokazuje linię poziomą, gdy hoverujemy na link */
+.stopka-linki a:hover {
+    text-decoration: underline;
+}
+
+/* .stopka-dol -> dolny tekst w stopce */
+.stopka-dol {
+    color: #54595d;
+    font-size: 12px;
 }
