@@ -1,32 +1,75 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Menu główne
-    const przyciskMenu = document.getElementById("menu-toggle");
-    const panelMenu = document.getElementById("panel-menu");
+/* PANEL WYGLĄDU STRONY */
 
-    if (przyciskMenu && panelMenu) {
-        przyciskMenu.addEventListener("click", function () {
-            const otwarte = panelMenu.classList.toggle("otwarte");
-            przyciskMenu.setAttribute("aria-expanded", otwarte);
+    // Otwieranie i zamykanie panelu
+    document.addEventListener("click", function (event) {
+        if (event.target.closest("#wyglad-toggle")) {
+            document.getElementById("panel-wygladu")
+                ?.classList.toggle("otwarty");
+        }
+
+        if (event.target.closest("#zamknij-wyglad")) {
+            document.getElementById("panel-wygladu")
+                ?.classList.remove("otwarty");
+        }
+    });
+
+
+    /* Zapisywanie i odtwarzanie ustawień wyglądu */
+    function zastosujUstawieniaWygladu() {
+        const tresc = document.querySelector(".tresc-strony");
+        const uklad = document.querySelector(".uklad-strony");
+
+        const rozmiar = localStorage.getItem("rozmiarTekstu") || "standardowy";
+        const szerokosc = localStorage.getItem("szerokoscStrony") || "standardowa";
+        const kolor = localStorage.getItem("kolorStrony") || "jasny";
+
+        if (tresc) {
+            tresc.classList.remove("tekst-maly", "tekst-duzy");
+
+            if (rozmiar === "maly") tresc.classList.add("tekst-maly");
+            if (rozmiar === "duzy") tresc.classList.add("tekst-duzy");
+        }
+
+        if (uklad) {
+            uklad.classList.toggle("strona-szeroka", szerokosc === "szeroka");
+        }
+
+        document.body.classList.toggle("tryb-ciemny", kolor === "ciemny");
+
+        document.querySelectorAll('input[name="rozmiar"]').forEach(input => {
+            input.checked = input.value === rozmiar;
+        });
+
+        document.querySelectorAll('input[name="szerokosc"]').forEach(input => {
+            input.checked = input.value === szerokosc;
+        });
+
+        document.querySelectorAll('input[name="kolor"]').forEach(input => {
+            input.checked = input.value === kolor;
         });
     }
 
-    // Panel Wyglądu
-    const przyciskWygladu = document.getElementById("wyglad-toggle");
-    const panelWygladu = document.getElementById("panel-wygladu");
-    const przyciskZamknij = document.getElementById("zamknij-wyglad");
+    /* Przywróć ustawienia po załadowaniu dokumentu */
+    document.addEventListener("DOMContentLoaded", zastosujUstawieniaWygladu);
 
-    if (przyciskWygladu && panelWygladu) {
-        przyciskWygladu.addEventListener("click", function () {
-            panelWygladu.classList.toggle("otwarty");
-        });
-    }
+    /* Zapisuj każdą zmianę ustawień */
+    document.addEventListener("change", function (event) {
+        const opcja = event.target;
 
-    if (przyciskZamknij && panelWygladu) {
-        przyciskZamknij.addEventListener("click", function () {
-            panelWygladu.classList.remove("otwarty");
-        });
-    }
-});
+        if (opcja.name === "rozmiar") {
+            localStorage.setItem("rozmiarTekstu", opcja.value);
+        }
+
+        if (opcja.name === "szerokosc") {
+            localStorage.setItem("szerokoscStrony", opcja.value);
+        }
+
+        if (opcja.name === "kolor") {
+            localStorage.setItem("kolorStrony", opcja.value);
+        }
+
+        zastosujUstawieniaWygladu();
+    });
 
 // Zalogowany użytkownik (znika login oraz tworzenie konta -> pojawia się użytkownik)
 function pokazZalogowanegoUzytkownika(nick) {

@@ -3,443 +3,647 @@
     box-sizing: border-box;
 }
 
-/* body -> usuwa domyślny margines wokół strony i ustawia białe tło strony */
-body {
-    margin: 0;
-    background-color: white;
-    font-family: Arial, sans-serif;
-}
+/* --------------UKŁAD WSZYSTKICH STRON-------------- */
 
-/* .układ-strony -> tworzenie siatki i utworzenie trzech kolumn (lewa i prawa, środkowa biała); wyświetlanie całej strony oraz białe tło */
-.uklad-strony {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1600px) minmax(0, 1fr);
-    grid-template-rows: minmax(100vh, auto);
-    min-height: 100vh;
-    background-color: white;
-}
+    /* body -> usuwa domyślny margines wokół strony i ustawia białe tło strony */
+    body {
+        margin: 0;
+        background-color: white;
+        font-family: Arial, sans-serif;
+    }
 
-/* .lewa-kolumna, .prawa-kolumna -> szarawe tło i możliwość zmniejszenia szerokości do 0 */
-.lewa-kolumna,
-.prawa-kolumna {
-    background-color: #eaecf0;
-    min-width: 0;
-}
+    /* .układ-strony -> tworzenie siatki i utworzenie trzech kolumn (lewa i prawa, środkowa biała); wyświetlanie całej strony oraz białe tło */
+    .uklad-strony {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1600px) minmax(0, 1fr);
+        grid-template-rows: minmax(100vh, auto);
+        min-height: 100vh;
+        background-color: white;
+    }
 
-/* .tresc-strony -> tło białe; warunek z 0-szerokością (to samo co w .lewa-kolumna, .prawa-kolumna); bordery oddzielające boxy; odstępy  */
-.tresc-strony {
-    background-color: white;
-    min-width: 0;
-    border-left: 1px solid #a2a9b1;
-    border-right: 1px solid #a2a9b1;
-    padding: 15px 20px 15px;
-}
+    /* .lewa-kolumna, .prawa-kolumna -> szarawe tło i możliwość zmniejszenia szerokości do 0 */
+    .lewa-kolumna,
+    .prawa-kolumna {
+        background-color: #eaecf0;
+        min-width: 0;
+    }
 
-/* .nagłówek -> ustawienie obok siebie w jednym wierszu; środkowanie; gap przedstawia przerwę pomiędzy itemami */
-.naglowek {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
+    /* .tresc-strony -> tło białe; warunek z 0-szerokością (to samo co w .lewa-kolumna, .prawa-kolumna); bordery oddzielające boxy; odstępy  */
+    .tresc-strony {
+        background-color: white;
+        min-width: 0;
+        border-left: 1px solid #a2a9b1;
+        border-right: 1px solid #a2a9b1;
+        padding: 15px 20px 15px;
+    }
 
-/* .menu-button -> wielkość kresek; kolor tła na jasno-szary; zmiana kursora na funkcjonowalny; ramka wokół; zaokrąglenie ramki; odstęp od lewej */
-.menu-button {
-    font-size: 30px;
-    background-color: lightgray;
-    cursor: pointer;
-    border: solid 2px black;
-    border-radius: 5px;
-    margin-left: 20px;
-}
+/* --------------NAGŁÓWEK-------------- */
 
-/* .menu-kontener -> pozycja kontenera głównego menu */
-.menu-kontener {
-    position: relative;
-    flex-shrink: 0;
-}
+    /* .nagłówek -> ustawienie obok siebie w jednym wierszu; środkowanie; gap przedstawia przerwę pomiędzy itemami */
+    .naglowek {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
 
-/* .panel-menu -> pozycja wyświetlania się okna menu */
-.panel-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 230px;
-    background: white;
-    border: 1px solid #a2a9b1;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-}
+    /* .menu-button -> wielkość kresek; kolor tła na jasno-szary; zmiana kursora na funkcjonowalny; ramka wokół; zaokrąglenie ramki; odstęp od lewej */
+    .menu-button {
+        font-size: 30px;
+        background-color: lightgray;
+        cursor: pointer;
+        border: solid 2px black;
+        border-radius: 5px;
+        margin-left: 20px;
+    }
 
-/* .panel-menu.otwarte -> gdy otwieramy menu, wyświetla blok */
-.panel-menu.otwarte {
-    display: block;
-}
+    /* .menu-kontener -> pozycja kontenera głównego menu */
+    .menu-kontener {
+        position: relative;
+        flex-shrink: 0;
+    }
 
-/* .panel-menu a -> wyświetla tekst w boxie, gdy otworzymy */
-.panel-menu a {
-    display: block;
-    padding: 12px 16px;
-    color: black;
-    text-decoration: none;
-}
+    /* .panel-menu -> pozycja wyświetlania się okna menu */
+    .panel-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 230px;
+        background: white;
+        border: 1px solid #a2a9b1;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+    }
 
-/* .panel-menu a:hover -> zmiana koloru tła, gdy najedziemy na tekst */
-.panel-menu a:hover {
-    background-color: #eaecf0;
-}
+    /* .panel-menu.otwarte -> gdy otwieramy menu, wyświetla blok */
+    .panel-menu.otwarte {
+        display: block;
+    }
+
+    /* .panel-menu a -> wyświetla tekst w boxie, gdy otworzymy */
+    .panel-menu a {
+        display: block;
+        padding: 12px 16px;
+        color: black;
+        text-decoration: none;
+    }
+
+    /* .panel-menu a:hover -> zmiana koloru tła, gdy najedziemy na tekst */
+    .panel-menu a:hover {
+        background-color: #eaecf0;
+    }
+
+    /* .logo -> szerokość; wysokość; dopasowanie obrazu; odstęp od dołu */
+    .logo {
+        width: 150px;
+        height: 100px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+
+    /* .wyszukiwarka -> ustawienie po kolei wszystkich elementów wyszukiwarki; środkowanie; ustawianie szerokości na 500px lub 100% dostępnej wartości; min. szerokość; wysokość; ramka; tło; odstęp od lewej */
+    .wyszukiwarka {
+        display: flex;
+        align-items: center;
+        width: min(500px, 100%);
+        min-width: 0;
+        height: 40px;
+        border: 1px solid #a2a9b1;
+        background-color: white;
+        margin-left: 20px;
+    }
+
+    /* .wyszukiwarka:focus-within -> podświetla się na kolor niebieskawy, gdy ktoś na to kliknie; tworzy się cień na 1px */
+    .wyszukiwarka:focus-within {
+        border-color: #36c;
+        box-shadow: inset 0 0 0 1px #36c;
+    }
+
+    /* .wyszukiwarka input -> od lewej do prawej tekst; minimalna szerokość to 0; wysokość zajmuje 100% ramki; odstępy boczne; usunięcie ramki; brak dodatkowej obramówki; wielkość czcionki na 14px */
+    .wyszukiwarka input {
+        flex: 1;
+        min-width: 0;
+        height: 100%;
+        padding: 0 10px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    /* .wyszukiwarka button -> button zajmuje całą wyszukiwarkę (wysokość); odstępy boczne; usuwanie ramki; dodanie lewej ramki; tło; kolor tekstu; funkcjonalny kursor */
+    .wyszukiwarka button {
+        height: 100%;
+        padding: 0 12px;
+        border: none;
+        border-left: 1px solid #a2a9b1;
+        background-color: #f8f9fa;
+        color: #202122;
+        cursor: pointer;
+    }
+
+    /* .wyszukiwarka button:hover -> zmienia kolor tła na lekko szarawy tam gdzie jest lupa */
+    .wyszukiwarka button:hover {
+        background-color: #eaecf0;
+    }
+
+    /* .konto -> automatyczny odstęp od lewej; ustawienie po kolei; odstęp 30px; nowrap, aby link się nie zawijał do kolejnych wierszy*/
+    .konto {
+        margin-left: auto;
+        display: flex;
+        gap: 30px;
+        white-space: nowrap;
+    }
+
+    /* .konto -> dekoracja linków w sekcji konta */
+    .konto a {
+        color: #36c;
+        text-decoration: none;
+    }
+
+    /* .konto a:hover -> dekoracja linków w sekcji konta hover */
+    .konto a:hover {
+        text-decoration: underline;
+    }
+
+/* --------------NAVIGATION BAR-------------- */
+
+    /* .navbar ul -> wyświtlanie elementów w navigation bar */
+    .navbar ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    /* .navbar .od-prawej -> wyświetlanie pewnych elementów od prawej strony */
+    .navbar .od-prawej {
+        margin-left: auto;
+    }
+
+    /* .navbar a -> dekoracja tekstu w navbarze */
+    .navbar a {
+        display: block;
+        padding: 15px;
+        color: black;
+        text-decoration: none;
+        position: relative;
+    }
+
+    /* .wyglad-button, .narzedzia-button -> dekoracja przycisków */
+    .wyglad-button,
+    .narzedzia-button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 15px;
+        background: white;
+        border: none;
+        color: black;
+        font: inherit;
+        cursor: pointer;
+    }
+
+    /* .wyglad-button:hover, .narzedzia-button:hover -> wygląd przycisków gdy się hoveruje myszką */
+    .wyglad-button:hover,
+    .narzedzia-button:hover {
+        background-color: rgba(224, 211, 211, 0.514);
+    }
+
+    /* .navbar a::after -> utworzenie animacji w navbarze */
+    .navbar a::after {
+        content: "";
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        bottom: 7px;
+        height: 1px;
+        background-color: black;
+        transform: scaleX(0);
+        transition: transform 0.2s ease;
+    }
+
+    /* .navbar a:hover::after -> gdy najedziesz wykona się animacja */
+    .navbar a:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* --------------PANEL WYGLĄDU STRONY-------------- */
+
+        /* .panel-wygladu -> określa wygląd panelu oraz umiejscowienie */
+        .panel-wygladu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 320px;
+            max-width: 100%;
+            height: 100vh;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: white;
+            color: #202122;
+            border-left: 1px solid #a2a9b1;
+            box-shadow: -3px 0 10px rgba(0, 0, 0, 0.12);
+            z-index: 1000;
+            display: none;
+        }
+
+        /* .panel-wygladu.otwarty -> gdy otwieramy panel, to pojawia się box z tekstem */
+        .panel-wygladu.otwarty {
+            display: block;
+        }
+
+        /* .panel-naglowek -> wyświetlanie w odpiowiednim miejscu tekstu */
+        .panel-naglowek {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* .panel-naglowek h3 -> usuwamy domyślny margines */
+        .panel-naglowek h3 {
+            margin: 0;
+        }
+
+        /* #zamknij-wyglad -> gdy zamykamy okno klikając w "x", to wszystko znika */
+        #zamknij-wyglad {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* .panel-wygladu label -> ustawiamy pod sobą opcje do wyboru w boxie panelu wyglądu */
+        .panel-wygladu label {
+            display: block;
+            margin: 12px 0;
+            cursor: pointer;
+        }
+        
+            /* -------------USTAWIANIE WYGLĄDU STRONY-------------- */
+
+            /* ROZMIAR TEKSTU */
+            /* .tresc-strony.tekst-maly main -> ustawienie mniejszego rozmiaru tekstu */
+            .tresc-strony.tekst-maly main {
+                font-size: 14px;
+            }
+
+            /* .tresc-strony.tekst-duzy main -> ustawienie dużego rozmiaru tekstu */
+            .tresc-strony.tekst-duzy main {
+                font-size: 20px;
+            }
+
+            /* SZEROKOŚĆ STRONY */
+            /* .uklad-strony.strona-szeroka -> szerokość strony */
+            .uklad-strony.strona-szeroka {
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1900px) minmax(0, 1fr);
+            }
+
+            /* TRYB CIEMNY */
+            /* body.tryb-ciemny -> ustawienie ciemnego motywu */
+            body.tryb-ciemny {
+                background-color: #101418;
+            }
+
+            /* .tryb-ciemny .uklad-strony, .tryb-ciemny .tresc-strony, .tryb-ciemny main, .tryb-ciemny footer -> ustawienie ciemnego motywu */
+            .tryb-ciemny .uklad-strony,
+            .tryb-ciemny .tresc-strony,
+            .tryb-ciemny main,
+            .tryb-ciemny footer {
+                background-color: #202122;
+                color: #eaecf0;
+            }
+
+            /* .tryb-ciemny .lewa-kolumna, .tryb-ciemny .prawa-kolumna -> ustawienie ciemnego motywu */
+            .tryb-ciemny .lewa-kolumna,
+            .tryb-ciemny .prawa-kolumna {
+                background-color: #101418;
+            }
+
+            /* .tryb-ciemny .tresc-strony -> ustawienie ciemnego motywu */
+            .tryb-ciemny .tresc-strony {
+                border-color: #54595d;
+            }
+
+            /* .tryb-ciemny .menu-button -> ustawienie ciemnego motywu menu-button */
+            .tryb-ciemny .menu-button {
+                background-color: #202122;
+                color: #eaecf0;
+                border-color: #54595d;
+            }
+
+            /* .tryb-ciemny .menu-button:hover -> ustawienie ciemnego motywu menu-button hover */
+            .tryb-ciemny .menu-button:hover {
+                background-color: #383a3d;
+            }
+
+            /* .tryb-ciemny .panel-menu -> ustawienie ciemnego motywu panelu menu */
+            .tryb-ciemny .panel-menu {
+                background-color: #202122;
+                border-color: #54595d;
+                color: #eaecf0;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+            }
+
+            /* .tryb-ciemny .panel-menu a -> ustawienie ciemnego motywu linków w rozwijanym menu */
+            .tryb-ciemny .panel-menu a {
+                background-color: #202122;
+                color: #eaecf0;
+            }
+
+            /* .tryb-ciemny .panel-menu a:hover -> ustawienie ciemnego motywu linków w rozwijanym menu hover */
+            .tryb-ciemny .panel-menu a:hover {
+                background-color: #383a3d;
+            }
+
+            /* .logo-ciemne -> domyślnie ukryte */
+            .logo-ciemne {
+                display: none;
+            }
+
+            /* .tryb-ciemny .logo-jasne -> domyślnie ukryte */
+            .tryb-ciemny .logo-jasne {
+                display: none;
+            }
+
+            /* .tryb-ciemny .logo-ciemne -> domyślnie wyświetlane */
+            .tryb-ciemny .logo-ciemne {
+                display: inline-block;
+            }
+
+            /* Wyszukiwarka w trybie ciemnym */
+            .tryb-ciemny .wyszukiwarka input {
+                background-color: #202122;
+                color: #eaecf0;
+                border-color: #54595d;
+            }
+            
+            /* .tryb-ciemny .wyszukiwarka input::placeholder -> ustawienie ciemnego motywu na wyszukiwarkę */
+            .tryb-ciemny .wyszukiwarka input::placeholder {
+                color: #a2a9b1;
+            }
+
+            /* .tryb-ciemny .wyszukiwarka button -> ustawienie ciemnego motywu na przycisk wyszukiwarki */
+            .tryb-ciemny .wyszukiwarka button {
+                background-color: #202122;
+                color: #eaecf0;
+                border-color: #54595d;
+            }
+
+            /* .tryb-ciemny .wyszukiwarka button:hover -> ustawienie ciemnego motywu na przycisk wyszukiwarki hover */
+            .tryb-ciemny .wyszukiwarka button:hover {
+                background-color: #383a3d;
+            }
+
+            /* .tryb-ciemny .navbar a, .tryb-ciemny .wyglad-button, .tryb-ciemny .narzedzia-button -> ustawienie ciemnego motywu */
+            .tryb-ciemny .navbar a,
+            .tryb-ciemny .wyglad-button,
+            .tryb-ciemny .narzedzia-button {
+                color: #eaecf0;
+                background-color: #202122;
+            }
+
+            /* .tryb-ciemny .navbar a:hover, .tryb-ciemny .wyglad-button:hover, .tryb-ciemny .narzedzia-button:hover -> ustawienie ciemnego motywu */
+            .tryb-ciemny .navbar a:hover,
+            .tryb-ciemny .wyglad-button:hover,
+            .tryb-ciemny .narzedzia-button:hover {
+                background-color: #383a3d;
+            }
+
+            /* .tryb-ciemny .navbar a::after -> ustawienie ciemnego motywu */
+            .tryb-ciemny .navbar a::after {
+                background-color: #eaecf0;
+            }
+
+            /* .tryb-ciemny .panel-wygladu -> ustawienie ciemnego motywu */
+            .tryb-ciemny .panel-wygladu {
+                background-color: #202122;
+                color: #eaecf0;
+                border-color: #54595d;
+            }
+
+            /* .tryb-ciemny .panel-wygladu hr -> ustawienie ciemnego motywu */
+            .tryb-ciemny .panel-wygladu hr {
+                border-color: #54595d;
+            }
+
+            /* .tryb-ciemny #zamknij-wyglad -> ustawienie ciemnego motywu "x" */
+            .tryb-ciemny #zamknij-wyglad {
+                color: #ffffff;
+            }
+
+            /* .tryb-ciemny #zamknij-wyglad:hover -> ustawienie ciemnego motywu "x" hover */
+            .tryb-ciemny #zamknij-wyglad:hover {
+                background-color: #383a3d;
+            }
+            /* .tryb-ciemny .stopka -> ustawienie ciemnego motywu */
+            .tryb-ciemny .stopka {
+                border-color: #54595d;
+            }
+
+            /* .tryb-ciemny .stopka-dol -> ustawienie ciemnego motywu */
+            .tryb-ciemny .stopka-dol {
+                color: #c8ccd1;
+            }
+
+            /* .tryb-ciemny .formularz-rejestracji, .tryb-ciemny .formularz-logowania -> ustawienie ciemnego motywu dla formularzy */
+            .tryb-ciemny .formularz-rejestracji,
+            .tryb-ciemny .formularz-logowania {
+                background-color: #202122;
+                color: #eaecf0;
+            }
+
+            /* .tryb-ciemny .formularz-rejestracji input, .tryb-ciemny .formularz-logowania input -> ustawienie ciemnego motywu dla pól formularzy */
+            .tryb-ciemny .formularz-rejestracji input,
+            .tryb-ciemny .formularz-logowania input {
+                background-color: #101418;
+                color: #eaecf0;
+                border-color: #72777d;
+            }
 
 
-/* .logo -> szerokość; wysokość; dopasowanie obrazu; odstęp od dołu */
-.logo {
-    width: 150px;
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 10px;
-}
+/* --------------FORMULARZ REJESTRACYJNY I LOGUJĄCY-------------- */
 
-/* .wyszukiwarka -> ustawienie po kolei wszystkich elementów wyszukiwarki; środkowanie; ustawianie szerokości na 500px lub 100% dostępnej wartości; min. szerokość; wysokość; ramka; tło; odstęp od lewej */
-.wyszukiwarka {
-    display: flex;
-    align-items: center;
-    width: min(500px, 100%);
-    min-width: 0;
-    height: 40px;
-    border: 1px solid #a2a9b1;
-    background-color: white;
-    margin-left: 20px;
-}
+    /* .formularz-rejestracji -> wygląd boxa */
+    .formularz-rejestracji {
+        max-width: 520px;
+        margin: 35px auto;
+        padding: 28px;
+        border: 1px solid #a2a9b1;
+        background: white;
+    }
 
-/* .wyszukiwarka:focus-within -> podświetla się na kolor niebieskawy, gdy ktoś na to kliknie; tworzy się cień na 1px */
-.wyszukiwarka:focus-within {
-    border-color: #36c;
-    box-shadow: inset 0 0 0 1px #36c;
-}
+    /* .formularz-rejestracji h1 -> ustawienie h1 */
+    .formularz-rejestracji h1 {
+        margin-top: 0;
+        font-size: 28px;
+        font-weight: normal;
+    }
 
-/* .wyszukiwarka input -> od lewej do prawej tekst; minimalna szerokość to 0; wysokość zajmuje 100% ramki; odstępy boczne; usunięcie ramki; brak dodatkowej obramówki; wielkość czcionki na 14px */
-.wyszukiwarka input {
-    flex: 1;
-    min-width: 0;
-    height: 100%;
-    padding: 0 10px;
-    border: none;
-    outline: none;
-    font-size: 14px;
-}
+    /* .opis-rejestracji -> ustawienie wyglądu opisu rejestracji */
+    .opis-rejestracji {
+        color: #54595d;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
 
-/* .wyszukiwarka button -> button zajmuje całą wyszukiwarkę (wysokość); odstępy boczne; usuwanie ramki; dodanie lewej ramki; tło; kolor tekstu; funkcjonalny kursor */
-.wyszukiwarka button {
-    height: 100%;
-    padding: 0 12px;
-    border: none;
-    border-left: 1px solid #a2a9b1;
-    background-color: #f8f9fa;
-    color: #202122;
-    cursor: pointer;
-}
+    /* .pole-formularza -> pole boxów do wpisywania dla każdej opcji */
+    .pole-formularza {
+        margin-bottom: 20px;
+    }
 
-/* .wyszukiwarka button:hover -> zmienia kolor tła na lekko szarawy tam gdzie jest lupa */
-.wyszukiwarka button:hover {
-    background-color: #eaecf0;
-}
+    /* .pole-formularza label -> wygląd boxów do wpisywania */
+    .pole-formularza label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
 
-/* .konto -> automatyczny odstęp od lewej; ustawienie po kolei; odstęp 30px; nowrap, aby link się nie zawijał do kolejnych wierszy*/
-.konto {
-    margin-left: auto;
-    display: flex;
-    gap: 30px;
-    white-space: nowrap;
-}
+    /* .pole-formularza input -> wygląd inputu w formularzu */
+    .pole-formularza input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #72777d;
+        border-radius: 2px;
+        font: inherit;
+    }
 
-/* .navbar ul -> wyświtlanie elementów w navigation bar */
-.navbar ul {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    flex-wrap: wrap;
-}
+    /* .pole-formularza input:focus -> Gdy okno kliknięte to tworzy otoczkę */
+    .pole-formularza input:focus {
+        outline: 2px solid #36c;
+        outline-offset: 1px;
+    }
 
-/* .navbar .od-prawej -> wyświetlanie pewnych elementów od prawej strony */
-.navbar .od-prawej {
-    margin-left: auto;
-}
+    /* .pomoc-formularza -> mała informacja pod nazwą użytkownika */
+    .pomoc-formularza {
+        display: block;
+        color: #54595d;
+        font-size: 13px;
+        margin-top: 6px;
+    }
 
-/* .navbar a -> dekoracja tekstu w navbarze */
-.navbar a {
-    display: block;
-    padding: 15px;
-    color: black;
-    text-decoration: none;
-    position: relative;
-}
+    /* .przycisk-rejestracji -> modelowanie przycisku rejestracji */
+    .przycisk-rejestracji {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #36c;
+        border-radius: 2px;
+        background: #36c;
+        color: white;
+        font: inherit;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-/* .wyglad-button, .narzedzia-button -> dekoracja przycisków */
-.wyglad-button,
-.narzedzia-button {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 15px;
-    background: white;
-    border: none;
-    color: black;
-    font: inherit;
-    cursor: pointer;
-}
+    /* .przycisk-rejestracji:hover -> gdy hoverujemy na przycisk zmienia się na niebiesko */
+    .przycisk-rejestracji:hover {
+        background: #2a4b8d;
+    }
 
-/* .wyglad-button:hover, .narzedzia-button:hover -> wygląd przycisków gdy się hoveruje myszką */
-.wyglad-button:hover,
-.narzedzia-button:hover {
-    background-color: rgba(224, 211, 211, 0.514);
-}
+    /* .informacja-logowanie -> informacja na dole, wyśrodkowana */
+    .informacja-logowanie {
+        margin-top: 22px;
+        text-align: center;
+        font-size: 14px;
+    }
 
-/* .navbar a::after -> utworzenie animacji w navbarze */
-.navbar a::after {
-    content: "";
-    position: absolute;
-    left: 15px;
-    right: 15px;
-    bottom: 7px;
-    height: 1px;
-    background-color: black;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-}
+    /* .formularz-logowania -> wygląd boxa */
+    .formularz-logowania {
+        max-width: 480px;
+        margin: 40px auto;
+        padding: 28px;
+        border: 1px solid #a2a9b1;
+        background: white;
+    }
 
-/* .navbar a:hover::after -> gdy najedziesz wykona się animacja */
-.navbar a:hover::after {
-    transform: scaleX(1);
-}
+    /* .formularz-logowania h1 -> ustawienie h1 */
+    .formularz-logowania h1 {
+        margin-top: 0;
+        font-size: 28px;
+        font-weight: normal;
+    }
 
-/* .panel-wygladu -> określa wygląd panelu oraz umiejscowienie */
-.panel-wygladu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 320px;
-    max-width: 100%;
-    height: 100vh;
-    padding: 20px;
-    overflow-y: auto;
-    background-color: white;
-    color: #202122;
-    border-left: 1px solid #a2a9b1;
-    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.12);
-    z-index: 1000;
-    display: none;
-}
+    /* .opis-logowania -> ustawienie wyglądu opisu rejestracji */
+    .opis-logowania {
+        color: #54595d;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
 
-/* .panel-wygladu.otwarty -> gdy otwieramy panel, to pojawia się box z tekstem */
-.panel-wygladu.otwarty {
-    display: block;
-}
+    /* .opcja-zapamietania -> mały checkbox, umieszczony pod hasłem */
+    .opcja-zapamietania {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 22px;
+        font-size: 14px;
+    }
 
-/* .panel-naglowek -> wyświetlanie w odpiowiednim miejscu tekstu */
-.panel-naglowek {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    /* .przycisk-logowania -> modelowanie przycisku logowania */
+    .przycisk-logowania {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #36c;
+        border-radius: 2px;
+        background: #36c;
+        color: white;
+        font: inherit;
+        font-weight: bold;
+        cursor: pointer;
+    }
 
-/* .panel-naglowek h3 -> usuwamy domyślny margines */
-.panel-naglowek h3 {
-    margin: 0;
-}
+    /* .przycisk-logowania:hover -> gdy hoverujemy na przycisk to zmienia się kolor */
+    .przycisk-logowania:hover {
+        background: #2a4b8d;
+    }
 
-/* #zamknij-wyglad -> gdy zamykamy okno klikając w "x", to wszystko znika */
-#zamknij-wyglad {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-}
+    /* .informacja-rejestracja -> informacja na dolnym środku formularza */
+    .informacja-rejestracja {
+        margin-top: 22px;
+        text-align: center;
+        font-size: 14px;
+    }
 
-/* .panel-wygladu label -> ustawiamy pod sobą opcje do wyboru w boxie panelu wyglądu */
-.panel-wygladu label {
-    display: block;
-    margin: 12px 0;
-    cursor: pointer;
-}
+/* --------------STOPKA-------------- */
 
-/* .formularz-rejestracji -> wygląd boxa */
-.formularz-rejestracji {
-    max-width: 520px;
-    margin: 35px auto;
-    padding: 28px;
-    border: 1px solid #a2a9b1;
-    background: white;
-}
+    /* .stopka -> Stopka Dynamopedii */
+    .stopka {
+        margin-top: 40px;
+        padding: 20px 0 15px;
+        border-top: 1px solid #a2a9b1;
+        color: #202122;
+        font-size: 13px;
+        line-height: 1.6;
+    }
 
-/* .formularz-rejestracji h1 -> ustawienie h1 */
-.formularz-rejestracji h1 {
-    margin-top: 0;
-    font-size: 28px;
-    font-weight: normal;
-}
+    /* .stopka-informacje -> margines stopki */
+    .stopka-informacje {
+        margin-bottom: 12px;
+    }
 
-/* .opis-rejestracji -> ustawienie wyglądu opisu rejestracji */
-.opis-rejestracji {
-    color: #54595d;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
+    /* .stopka-linki -> wyświetlanie linków */
+    .stopka-linki {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        margin-bottom: 12px;
+    }
 
-/* .pole-formularza -> pole boxów do wpisywania dla każdej opcji */
-.pole-formularza {
-    margin-bottom: 20px;
-}
+    /* .stopka-linki a -> kolor linków */
+    .stopka-linki a {
+        color: #36c;
+        text-decoration: none;
+    }
 
-/* .pole-formularza label -> wygląd boxów do wpisywania */
-.pole-formularza label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 7px;
-}
+    /* .stopka-linki a:hover -> pokazuje linię poziomą, gdy hoverujemy na link */
+    .stopka-linki a:hover {
+        text-decoration: underline;
+    }
 
-/* .pole-formularza input -> wygląd inputu w formularzu */
-.pole-formularza input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #72777d;
-    border-radius: 2px;
-    font: inherit;
-}
-
-/* .pole-formularza input:focus -> Gdy okno kliknięte to tworzy otoczkę */
-.pole-formularza input:focus {
-    outline: 2px solid #36c;
-    outline-offset: 1px;
-}
-
-/* .pomoc-formularza -> mała informacja pod nazwą użytkownika */
-.pomoc-formularza {
-    display: block;
-    color: #54595d;
-    font-size: 13px;
-    margin-top: 6px;
-}
-
-/* .przycisk-rejestracji -> modelowanie przycisku rejestracji */
-.przycisk-rejestracji {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #36c;
-    border-radius: 2px;
-    background: #36c;
-    color: white;
-    font: inherit;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* .przycisk-rejestracji:hover -> gdy hoverujemy na przycisk zmienia się na niebiesko */
-.przycisk-rejestracji:hover {
-    background: #2a4b8d;
-}
-
-/* .informacja-logowanie -> informacja na dole, wyśrodkowana */
-.informacja-logowanie {
-    margin-top: 22px;
-    text-align: center;
-    font-size: 14px;
-}
-
-/* .formularz-logowania -> wygląd boxa */
-.formularz-logowania {
-    max-width: 480px;
-    margin: 40px auto;
-    padding: 28px;
-    border: 1px solid #a2a9b1;
-    background: white;
-}
-
-/* .formularz-logowania h1 -> ustawienie h1 */
-.formularz-logowania h1 {
-    margin-top: 0;
-    font-size: 28px;
-    font-weight: normal;
-}
-
-/* .opis-logowania -> ustawienie wyglądu opisu rejestracji */
-.opis-logowania {
-    color: #54595d;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
-
-/* .opcja-zapamietania -> mały checkbox, umieszczony pod hasłem */
-.opcja-zapamietania {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 22px;
-    font-size: 14px;
-}
-
-/* .przycisk-logowania -> modelowanie przycisku logowania */
-.przycisk-logowania {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #36c;
-    border-radius: 2px;
-    background: #36c;
-    color: white;
-    font: inherit;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* .przycisk-logowania:hover -> gdy hoverujemy na przycisk to zmienia się kolor */
-.przycisk-logowania:hover {
-    background: #2a4b8d;
-}
-
-/* .informacja-rejestracja -> informacja na dolnym środku formularza */
-.informacja-rejestracja {
-    margin-top: 22px;
-    text-align: center;
-    font-size: 14px;
-}
-
-/* .stopka -> Stopka Dynamopedii */
-.stopka {
-    margin-top: 40px;
-    padding: 20px 0 15px;
-    border-top: 1px solid #a2a9b1;
-    color: #202122;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-/* .stopka-informacje -> margines stopki */
-.stopka-informacje {
-    margin-bottom: 12px;
-}
-
-/* .stopka-linki -> wyświetlanie linków */
-.stopka-linki {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 18px;
-    margin-bottom: 12px;
-}
-
-/* .stopka-linki a -> kolor linków */
-.stopka-linki a {
-    color: #36c;
-    text-decoration: none;
-}
-
-/* .stopka-linki a:hover -> pokazuje linię poziomą, gdy hoverujemy na link */
-.stopka-linki a:hover {
-    text-decoration: underline;
-}
-
-/* .stopka-dol -> dolny tekst w stopce */
-.stopka-dol {
-    color: #54595d;
-    font-size: 12px;
-}
+    /* .stopka-dol -> dolny tekst w stopce */
+    .stopka-dol {
+        color: #54595d;
+        font-size: 12px;
+    }

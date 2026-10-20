@@ -34,127 +34,32 @@
             <!-- (NAGŁÓWEK)klasa zarządzająca nagłówkiem -->
             <div id="naglowek"></div>
 
-            <script>
-            fetch("header.html")
-                .then(response => response.text())
-                .then(html => {
-                document.getElementById("naglowek").innerHTML = html;
+                <script>
+                fetch("header.html")
+                    .then(response => response.text())
+                    .then(html => {
+                    document.getElementById("naglowek").innerHTML = html;
 
-                const przyciskMenu = document.getElementById("menu-toggle");
-                const panelMenu = document.getElementById("panel-menu");
+                    const przyciskMenu = document.getElementById("menu-toggle");
+                    const panelMenu = document.getElementById("panel-menu");
 
-                przyciskMenu.addEventListener("click", function () {
-                    panelMenu.classList.toggle("otwarte");
+                    przyciskMenu.addEventListener("click", function () {
+                        panelMenu.classList.toggle("otwarte");
+                    });
                 });
-            });
-            </script>
-            
-            <!-- Navigation bar -->
-            <div class="obszar-nawigacji">
+                </script>
+                
+                <!-- Klasa Navbar -->
+                <div id="navbar"></div>
 
-                <!-- Linia oddzielająca nagłówek od navbara -->
-                <hr>
-
-                <!-- klasa zarządzająca navbarem --> 
-                <nav class="navbar">
-                    <ul>
-                        <!-- wybór strony głównej -->
-                        <li>
-                            <a href="main_page.html" title="Przejdź do strony głównej">Strona główna</a>
-                        </li>
-
-                        <!-- wybór strony: dyskusja -->
-                        <li>
-                            <a href="main_page.html" title="Dyskusje">Dyskusja</a>
-                        </li>
-
-                        <!-- klasa, dzięki której elementy będą się wyświetlać od prawej strony, wybór strony: czytaj -->
-                        <li class="od-prawej">
-                            <a href="main_page.html" title="Przejdź do czytania artykułu na obecnej stronie">Czytaj</a>
-                        </li>
-
-                        <!-- wybór strony: kod źródłowy -->
-                        <li>
-                            <a href="main_page.html" title="Przejdź do kodu źródłowego strony">Kod źródłowy</a>
-                        </li>
-
-                        <!-- wybór strony: wyświetl historię -->
-                        <li>
-                            <a href="main_page.html" title="Starsze wersje tej strony">Wyświetl historię</a>
-                        </li>
-
-                        <!-- Wybór przycisku: Narzędzia -->
-                        <li>
-                            <button class="narzedzia-button">Narzędzia</button>
-                        </li>
-
-                        <!-- Wybór przycisku, który otwiera menu-wyglądu -->
-                        <li>
-                            <button class="wyglad-button" id="wyglad-toggle"><i class="bi bi-eye"></i>Wygląd</button>
-                        </li>
-                    </ul>
-                </nav>
-                <hr>
-            </div>
-
-                <!-- Panel wyglądu -->
-                <aside class="panel-wygladu" id="panel-wygladu">
-                    <div class="panel-naglowek">
-                        <h3>Wygląd</h3>
-
-                        <!-- guzik do zamknięcia panelu wyglądu -->
-                        <button id="zamknij-wyglad">
-                            x
-                        </button>
-                    </div>
-
-                    <hr>
-
-                    <!-- Wybieranie wielkości tekstu strony -->
-                    <h4>Rozmiar tekstu</h4>
-                    <label>
-                        <input type="radio" name="rozmiar" value="maly">
-                        Mały
-                    </label>
-
-                    <label>
-                        <input type="radio" name="rozmiar" value="standardowy" checked>
-                        Standardowy
-                    </label>
-
-                    <label>
-                        <input type="radio" name="rozmiar" value="duzy">
-                        Duży
-                    </label>
-
-                    <hr>
-
-                    <!-- Wybieranie szerokości strony -->
-                    <h4>Szerokość</h4>
-                    <label>
-                        <input type="radio" name="szerokosc" value="standardowa" checked>
-                        Standardowa
-                    </label>
-
-                    <label>
-                        <input type="radio" name="szerokosc" value="szeroka">
-                        Szeroka
-                    </label>
-
-                    <hr>
-
-                    <!-- Wybieranie koloru tła strony -->
-                    <h4>Kolor</h4>
-                    <label>
-                        <input type="radio" name="kolor" value="jasny" checked>
-                        Jasny
-                    </label>
-
-                    <label>
-                        <input type="radio" name="kolor" value="ciemny">
-                        Ciemny
-                    </label>
-                </aside>
+                <script>
+                    fetch("navbar.html")
+                        .then(response => response.text())
+                        .then(html => {
+                            document.getElementById("navbar").innerHTML = html;
+                            zastosujUstawieniaWygladu();
+                        });
+                </script>   
 
             <!-- GŁÓWNA STRONA -->
             <main>
@@ -172,9 +77,6 @@
                         .then(html => {
                             document.getElementById("stopka").innerHTML = html;
                         })
-                        .catch(error => {
-                            console.error("Nie udało się wczytać stopki:", error);
-                        });
                 </script>
             </footer>
 
