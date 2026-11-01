@@ -7,6 +7,7 @@ import (
 	"wikipedia/backend/middlewares"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -23,6 +24,14 @@ func ConnectDatabase() *gorm.DB {
 }
 
 func main() {
+
+	if err := godotenv.Load(); err != nil {
+		log.Println("Nie udało się wczytać .env")
+	}
+
+	if os.Getenv("SECRET") == "" {
+		log.Fatal("Brak klucza SECRET")
+	}
 	r := gin.New()
 	db := ConnectDatabase()
 
