@@ -1,7 +1,10 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
+	"os"
+	"time"
 	"wikipedia/backend/models"
 
 	"errors"
@@ -9,6 +12,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
@@ -65,6 +69,24 @@ func (h *DBS) Login(c *gin.Context) {
 		})
 		return
 	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"sub": fmt.Sprint(user.ID),
+		"exp": time.Now().Add(time.Hour * 24).Unix(),
+	})
+
+	secrets := os.Getenv("SECRET")
+	tokenString, err := token.SignedString([]byte(secrets))
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Nie udalo sie stworzyc tokenu",
+		})
+		return
+	}
+
+	c.SetSameSite(http.SameSiteLaxMode)
+	c.SetCookie("Authorization", tokenString, int((24 * time.Hour).Seconds()), "/", "", false, true)
 
 	c.JSON(http.StatusOK, gin.H{
 		"message": "ok",
@@ -129,6 +151,13 @@ func (h *DBS) Register(c *gin.Context) {
 		return
 	}
 
+	if len([]byte(input.Password)) > 72 {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Haslo jest za dlugie",
+		})
+		return
+	}
+
 	hash, err := bcrypt.GenerateFromPassword(
 		[]byte(input.Password),
 		bcrypt.DefaultCost,
@@ -148,5 +177,16 @@ func (h *DBS) Register(c *gin.Context) {
 	}
 
 	err = h.DB.Create(&user).Error
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Nie udalo sie utworzyc konta",
+		})
+		return
+	}
+
+	c.JSON(http.StatusCreated, gin.H{
+		"message": "Konto zostalo utworzone",
+	})
 
 }
