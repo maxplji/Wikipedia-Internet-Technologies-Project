@@ -1,649 +1,1166 @@
-/* Ustawienie border-boxa dla wszystkich elementów */
-* {
+/* ==================================================
+   1. USTAWIENIA GLOBALNE
+================================================== */
+
+:root {
+    --kolor-tekstu: #202122;
+    --kolor-tekstu-dodatkowego: #54595d;
+    --kolor-tla: #ffffff;
+    --kolor-tla-szarego: #eaecf0;
+    --kolor-tla-jasnego: #f8f9fa;
+    --kolor-ramki: #a2a9b1;
+    --kolor-ramki-ciemnej: #72777d;
+    --kolor-linku: #36c;
+    --kolor-linku-hover: #2a4b8d;
+
+    --ciemne-tlo: #202122;
+    --ciemne-tlo-dodatkowe: #101418;
+    --ciemne-tlo-hover: #383a3d;
+    --ciemny-tekst: #eaecf0;
+    --ciemna-ramka: #54595d;
+
+    --szerokosc-strony: 1600px;
+    --szerokosc-strony-szerokiej: 1900px;
+
+    --odstep-strony: 20px;
+    --promien-ramki: 3px;
+    --cien-panelu: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-/* --------------UKŁAD WSZYSTKICH STRON-------------- */
+body {
+    margin: 0;
+    background-color: var(--kolor-tla);
+    color: var(--kolor-tekstu);
+    font-family: Arial, sans-serif;
+}
 
-    /* body -> usuwa domyślny margines wokół strony i ustawia białe tło strony */
-    body {
-        margin: 0;
-        background-color: white;
-        font-family: Arial, sans-serif;
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: var(--kolor-linku);
+}
+
+:focus-visible {
+    outline: 2px solid var(--kolor-linku);
+    outline-offset: 2px;
+}
+
+
+/* ==================================================
+   2. GŁÓWNY UKŁAD STRONY
+================================================== */
+
+.uklad-strony {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, var(--szerokosc-strony))
+        minmax(0, 1fr);
+    grid-template-rows: minmax(100vh, auto);
+    min-height: 100vh;
+    background-color: var(--kolor-tla-szarego);
+}
+
+.lewa-kolumna,
+.prawa-kolumna {
+    min-width: 0;
+    background-color: var(--kolor-tla-szarego);
+}
+
+.tresc-strony {
+    min-width: 0;
+    padding: 15px var(--odstep-strony);
+    background-color: var(--kolor-tla);
+    border-right: 1px solid var(--kolor-ramki);
+    border-left: 1px solid var(--kolor-ramki);
+}
+
+.uklad-strony.strona-szeroka {
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, var(--szerokosc-strony-szerokiej))
+        minmax(0, 1fr);
+}
+
+
+/* ==================================================
+   3. NAGŁÓWEK STRONY
+================================================== */
+
+.naglowek {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    min-width: 0;
+}
+
+.menu-kontener {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.menu-button {
+    margin-left: 20px;
+    padding: 3px 8px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: lightgray;
+    color: black;
+    font-size: 30px;
+}
+
+.menu-button:hover {
+    background-color: var(--kolor-ramki);
+}
+
+.logo {
+    width: 150px;
+    height: 100px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.logo-ciemne {
+    display: none;
+}
+
+.panel-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    width: 230px;
+    background-color: var(--kolor-tla);
+    border: 1px solid var(--kolor-ramki);
+    box-shadow: var(--cien-panelu);
+}
+
+.panel-menu.otwarte {
+    display: block;
+}
+
+.panel-menu a {
+    display: block;
+    padding: 12px 16px;
+    color: var(--kolor-tekstu);
+    text-decoration: none;
+}
+
+.panel-menu a:hover {
+    background-color: var(--kolor-tla-szarego);
+}
+
+
+/* ==================================================
+   4. WYSZUKIWARKA
+================================================== */
+
+.wyszukiwarka {
+    display: flex;
+    align-items: center;
+    width: min(500px, 100%);
+    min-width: 0;
+    height: 40px;
+    margin-left: 20px;
+    border: 1px solid var(--kolor-ramki);
+    background-color: var(--kolor-tla);
+}
+
+.wyszukiwarka:focus-within {
+    border-color: var(--kolor-linku);
+    box-shadow: inset 0 0 0 1px var(--kolor-linku);
+}
+
+.wyszukiwarka input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--kolor-tekstu);
+    font-size: 14px;
+}
+
+.wyszukiwarka input:focus-visible {
+    outline: none;
+}
+
+.wyszukiwarka button {
+    height: 100%;
+    padding: 0 12px;
+    border: none;
+    border-left: 1px solid var(--kolor-ramki);
+    background-color: var(--kolor-tla-jasnego);
+    color: var(--kolor-tekstu);
+}
+
+.wyszukiwarka button:hover {
+    background-color: var(--kolor-tla-szarego);
+}
+
+
+/* ==================================================
+   5. SEKCJA KONTA
+================================================== */
+
+.konto {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.konto a {
+    color: var(--kolor-linku);
+    text-decoration: none;
+}
+
+.konto a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==================================================
+   6. PASEK NAWIGACYJNY
+================================================== */
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar .od-prawej {
+    margin-left: auto;
+}
+
+.navbar a {
+    position: relative;
+    display: block;
+    padding: 15px;
+    color: var(--kolor-tekstu);
+    text-decoration: none;
+}
+
+.navbar a::after {
+    position: absolute;
+    right: 15px;
+    bottom: 7px;
+    left: 15px;
+    height: 1px;
+    background-color: var(--kolor-tekstu);
+    content: "";
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+}
+
+.wyglad-button,
+.narzedzia-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 15px;
+    border: none;
+    background-color: var(--kolor-tla);
+    color: var(--kolor-tekstu);
+    font: inherit;
+}
+
+.wyglad-button:hover,
+.narzedzia-button:hover {
+    background-color: rgba(224, 211, 211, 0.514);
+}
+
+
+/* ==================================================
+   7. MENU NARZĘDZIA
+================================================== */
+
+.narzedzia-kontener {
+    position: relative;
+}
+
+.panel-narzedzi {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    display: none;
+    min-width: 200px;
+    background-color: var(--kolor-tla);
+    border: 1px solid var(--kolor-ramki);
+    box-shadow: var(--cien-panelu);
+}
+
+.panel-narzedzi.otwarte {
+    display: block;
+}
+
+.panel-narzedzi a {
+    display: block;
+    padding: 12px;
+    color: var(--kolor-tekstu);
+    text-decoration: none;
+}
+
+.panel-narzedzi a:hover {
+    background-color: var(--kolor-tla-szarego);
+}
+
+
+/* ==================================================
+   8. PANEL USTAWIEŃ WYGLĄDU
+================================================== */
+
+.panel-wygladu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    width: 320px;
+    max-width: 100%;
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: var(--kolor-tla);
+    color: var(--kolor-tekstu);
+    border-left: 1px solid var(--kolor-ramki);
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.12);
+}
+
+.panel-wygladu.otwarty {
+    display: block;
+}
+
+.panel-naglowek {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-naglowek h3 {
+    margin: 0;
+}
+
+#zamknij-wyglad {
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: 28px;
+}
+
+#zamknij-wyglad:hover {
+    background-color: var(--kolor-tla-szarego);
+}
+
+.panel-wygladu label {
+    display: block;
+    margin: 12px 0;
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   9. USTAWIENIA ROZMIARU TEKSTU
+================================================== */
+
+.tresc-strony.tekst-maly main {
+    font-size: 14px;
+}
+
+.tresc-strony.tekst-duzy main {
+    font-size: 20px;
+}
+
+
+/* ==================================================
+   10. FORMULARZE REJESTRACJI I LOGOWANIA
+================================================== */
+
+.formularz-rejestracji,
+.formularz-logowania {
+    padding: 28px;
+    border: 1px solid var(--kolor-ramki);
+    background-color: var(--kolor-tla);
+}
+
+.formularz-rejestracji {
+    max-width: 520px;
+    margin: 35px auto;
+}
+
+.formularz-logowania {
+    max-width: 480px;
+    margin: 40px auto;
+}
+
+.formularz-rejestracji h1,
+.formularz-logowania h1 {
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.opis-rejestracji,
+.opis-logowania {
+    margin-bottom: 25px;
+    color: var(--kolor-tekstu-dodatkowego);
+    line-height: 1.5;
+}
+
+.pole-formularza {
+    margin-bottom: 20px;
+}
+
+.pole-formularza label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.pole-formularza input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--kolor-ramki-ciemnej);
+    border-radius: 2px;
+    font: inherit;
+}
+
+.pole-formularza input:focus {
+    outline: 2px solid var(--kolor-linku);
+    outline-offset: 1px;
+}
+
+.pomoc-formularza {
+    display: block;
+    margin-top: 6px;
+    color: var(--kolor-tekstu-dodatkowego);
+    font-size: 13px;
+}
+
+.przycisk-rejestracji,
+.przycisk-logowania {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--kolor-linku);
+    border-radius: 2px;
+    background-color: var(--kolor-linku);
+    color: white;
+    font: inherit;
+    font-weight: bold;
+}
+
+.przycisk-rejestracji:hover,
+.przycisk-logowania:hover {
+    background-color: var(--kolor-linku-hover);
+}
+
+.opcja-zapamietania {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    font-size: 14px;
+}
+
+.informacja-logowanie,
+.informacja-rejestracja {
+    margin-top: 22px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   11. STOPKA
+================================================== */
+
+.stopka {
+    margin-top: 40px;
+    padding: 20px 0 15px;
+    border-top: 1px solid var(--kolor-ramki);
+    color: var(--kolor-tekstu);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.stopka-informacje {
+    margin-bottom: 12px;
+}
+
+.stopka-linki {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-bottom: 12px;
+}
+
+.stopka-linki a {
+    color: var(--kolor-linku);
+    text-decoration: none;
+}
+
+.stopka-linki a:hover {
+    text-decoration: underline;
+}
+
+.stopka-dol {
+    color: var(--kolor-tekstu-dodatkowego);
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   12. STRONA TWORZENIA ARTYKUŁU
+================================================== */
+
+.tworzenie-artykulu {
+    padding: 20px 0;
+}
+
+.tworzenie-artykulu h1 {
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: normal;
+}
+
+.opis-tworzenia {
+    margin-bottom: 25px;
+    color: var(--kolor-tekstu-dodatkowego);
+}
+
+.edytor-artykulu {
+    margin-top: 25px;
+}
+
+.edytor-artykulu h2 {
+    margin: 25px 0 12px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#tytul-artykulu {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--kolor-ramki);
+    border-radius: var(--promien-ramki);
+    font-size: 16px;
+}
+
+.pasek-formatowania {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 8px;
+    border: 1px solid var(--kolor-ramki);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    background-color: var(--kolor-tla-szarego);
+}
+
+.pasek-formatowania button {
+    padding: 7px 12px;
+    border: 1px solid var(--kolor-ramki);
+    border-radius: var(--promien-ramki);
+    background-color: var(--kolor-tla);
+    font-size: 16px;
+}
+
+.pasek-formatowania button:hover {
+    background-color: var(--kolor-tla-jasnego);
+}
+
+#tresc-artykulu {
+    width: 100%;
+    min-height: 450px;
+    padding: 15px;
+    resize: vertical;
+    border: 1px solid var(--kolor-ramki);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.przyciski-edytora {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.przyciski-edytora button {
+    padding: 10px 16px;
+    border: 1px solid var(--kolor-ramki);
+    border-radius: var(--promien-ramki);
+    font-size: 14px;
+}
+
+.zapisz-button {
+    border-color: var(--kolor-linku) !important;
+    background-color: var(--kolor-linku);
+    color: white;
+}
+
+.zapisz-button:hover {
+    background-color: var(--kolor-linku-hover);
+}
+
+
+/* ==================================================
+   13. PODGLĄD ARTYKUŁU
+================================================== */
+
+.naglowek-podgladu {
+    margin: 30px 0 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--kolor-ramki);
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.podglad-artykulu {
+    display: flow-root;
+    padding: 20px 0;
+}
+
+.tresc-podgladu {
+    display: flow-root;
+    max-width: 100%;
+    padding: 20px 0;
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+}
+
+.tresc-podgladu h1 {
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--kolor-ramki);
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.tresc-podgladu h2 {
+    margin-top: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--kolor-ramki);
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.tresc-podgladu p {
+    margin: 12px 0;
+}
+
+.tresc-podgladu ul {
+    padding-left: 30px;
+}
+
+.tresc-podgladu a {
+    color: var(--kolor-linku);
+    text-decoration: underline;
+}
+
+
+/* ==================================================
+   14. PANEL DODAWANIA ZDJĘĆ
+================================================== */
+
+.panel-dodawania-zdjecia {
+    margin: 0 0 15px;
+    padding: 18px;
+    border: 1px solid var(--kolor-ramki);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    background-color: var(--kolor-tla-jasnego);
+}
+
+.panel-dodawania-zdjecia label[for="opis-zdjecia"] {
+    display: block;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--kolor-ramki);
+}
+
+.panel-dodawania-zdjecia[hidden] {
+    display: none;
+}
+
+.panel-dodawania-zdjecia:not([hidden]) {
+    display: block;
+}
+
+.panel-dodawania-zdjecia h3 {
+    margin-top: 0;
+}
+
+.panel-dodawania-zdjecia label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+.panel-dodawania-zdjecia input,
+.panel-dodawania-zdjecia select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid var(--kolor-ramki);
+    border-radius: var(--promien-ramki);
+}
+
+.lub {
+    color: var(--kolor-ramki-ciemnej);
+    text-align: center;
+}
+
+.przyciski-zdjecia {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.przyciski-zdjecia button {
+    padding: 10px 15px;
+}
+
+
+/* ==================================================
+   15. ZDJĘCIA W PODGLĄDZIE ARTYKUŁU
+================================================== */
+
+.zdjecie-artykulu {
+    max-width: 100%;
+    margin: 20px;
+    text-align: center;
+}
+
+.zdjecie-artykulu img {
+    max-width: 100%;
+    max-height: 450px;
+    height: auto;
+    object-fit: contain;
+}
+
+.zdjecie-artykulu figcaption {
+    margin-top: 6px;
+    color: var(--kolor-ramki-ciemnej);
+    font-size: 14px;
+}
+
+.zdjecie-artykulu.polozenie-prawo {
+    float: right;
+    max-width: 40%;
+    margin: 5px 0 15px 20px;
+}
+
+.zdjecie-artykulu.polozenie-lewo {
+    float: left;
+    max-width: 40%;
+    margin: 5px 20px 15px 0;
+}
+
+.zdjecie-artykulu.polozenie-srodek {
+    clear: both;
+    margin: 20px auto;
+}
+
+
+/* ==================================================
+   16. TRYB CIEMNY – ELEMENTY OGÓLNE
+================================================== */
+
+body.tryb-ciemny {
+    background-color: var(--ciemne-tlo-dodatkowe);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .uklad-strony,
+.tryb-ciemny .tresc-strony,
+.tryb-ciemny main,
+.tryb-ciemny footer {
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .lewa-kolumna,
+.tryb-ciemny .prawa-kolumna {
+    background-color: var(--ciemne-tlo-dodatkowe);
+}
+
+.tryb-ciemny .tresc-strony {
+    border-color: var(--ciemna-ramka);
+}
+
+
+/* ==================================================
+   17. TRYB CIEMNY – NAGŁÓWEK I MENU
+================================================== */
+
+.tryb-ciemny .menu-button {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .menu-button:hover {
+    background-color: var(--ciemne-tlo-hover);
+}
+
+.tryb-ciemny .panel-menu,
+.tryb-ciemny .panel-narzedzi {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.tryb-ciemny .panel-menu a,
+.tryb-ciemny .panel-narzedzi a {
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .panel-menu a:hover,
+.tryb-ciemny .panel-narzedzi a:hover {
+    background-color: var(--ciemne-tlo-hover);
+}
+
+.tryb-ciemny .logo-jasne {
+    display: none;
+}
+
+.tryb-ciemny .logo-ciemne {
+    display: inline-block;
+}
+
+
+/* ==================================================
+   18. TRYB CIEMNY – WYSZUKIWARKA
+================================================== */
+
+.tryb-ciemny .wyszukiwarka {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+}
+
+.tryb-ciemny .wyszukiwarka input {
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .wyszukiwarka input::placeholder {
+    color: var(--kolor-ramki);
+}
+
+.tryb-ciemny .wyszukiwarka button {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .wyszukiwarka button:hover {
+    background-color: var(--ciemne-tlo-hover);
+}
+
+
+/* ==================================================
+   19. TRYB CIEMNY – NAWIGACJA
+================================================== */
+
+.tryb-ciemny .navbar a,
+.tryb-ciemny .wyglad-button,
+.tryb-ciemny .narzedzia-button {
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .navbar a:hover,
+.tryb-ciemny .wyglad-button:hover,
+.tryb-ciemny .narzedzia-button:hover {
+    background-color: var(--ciemne-tlo-hover);
+}
+
+.tryb-ciemny .navbar a::after {
+    background-color: var(--ciemny-tekst);
+}
+
+
+/* ==================================================
+   20. TRYB CIEMNY – PANEL WYGLĄDU
+================================================== */
+
+.tryb-ciemny .panel-wygladu {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .panel-wygladu hr {
+    border-color: var(--ciemna-ramka);
+}
+
+.tryb-ciemny #zamknij-wyglad {
+    color: white;
+}
+
+.tryb-ciemny #zamknij-wyglad:hover {
+    background-color: var(--ciemne-tlo-hover);
+}
+
+
+/* ==================================================
+   21. TRYB CIEMNY – FORMULARZE
+================================================== */
+
+.tryb-ciemny .formularz-rejestracji,
+.tryb-ciemny .formularz-logowania {
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .formularz-rejestracji input,
+.tryb-ciemny .formularz-logowania input {
+    border-color: var(--kolor-ramki);
+    background-color: var(--ciemne-tlo-dodatkowe);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .opis-rejestracji,
+.tryb-ciemny .opis-logowania,
+.tryb-ciemny .pomoc-formularza {
+    color: var(--kolor-ramki);
+}
+
+
+/* ==================================================
+   22. TRYB CIEMNY – STOPKA
+================================================== */
+
+.tryb-ciemny .stopka {
+    border-color: var(--ciemna-ramka);
+}
+
+.tryb-ciemny .stopka-dol {
+    color: #c8ccd1;
+}
+
+
+/* ==================================================
+   23. TRYB CIEMNY – EDYTOR I PODGLĄD
+================================================== */
+
+.tryb-ciemny .tworzenie-artykulu,
+.tryb-ciemny .podglad-artykulu {
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .opis-tworzenia {
+    color: var(--kolor-ramki);
+}
+
+.tryb-ciemny #tytul-artykulu,
+.tryb-ciemny #tresc-artykulu {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .pasek-formatowania {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+}
+
+.tryb-ciemny .pasek-formatowania button {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo-hover);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .pasek-formatowania button:hover {
+    background-color: var(--ciemna-ramka);
+}
+
+.tryb-ciemny .tresc-podgladu h1,
+.tryb-ciemny .tresc-podgladu h2 {
+    border-color: var(--ciemna-ramka);
+}
+
+.tryb-ciemny .tresc-podgladu a {
+    color: #6b9fff;
+}
+
+.tryb-ciemny .panel-dodawania-zdjecia {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .panel-dodawania-zdjecia input,
+.tryb-ciemny .panel-dodawania-zdjecia select {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo-hover);
+    color: var(--ciemny-tekst);
+}
+
+.tryb-ciemny .zdjecie-artykulu figcaption {
+    color: var(--kolor-ramki);
+}
+
+
+/* ==================================================
+   24. RESPONSYWNOŚĆ – TABLETY
+================================================== */
+
+@media (max-width: 1100px) {
+    .uklad-strony,
+    .uklad-strony.strona-szeroka {
+        grid-template-columns: 0 minmax(0, 1fr) 0;
     }
 
-    /* .układ-strony -> tworzenie siatki i utworzenie trzech kolumn (lewa i prawa, środkowa biała); wyświetlanie całej strony oraz białe tło */
-    .uklad-strony {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1600px) minmax(0, 1fr);
-        grid-template-rows: minmax(100vh, auto);
-        min-height: 100vh;
-        background-color: white;
-    }
-
-    /* .lewa-kolumna, .prawa-kolumna -> szarawe tło i możliwość zmniejszenia szerokości do 0 */
-    .lewa-kolumna,
-    .prawa-kolumna {
-        background-color: #eaecf0;
-        min-width: 0;
-    }
-
-    /* .tresc-strony -> tło białe; warunek z 0-szerokością (to samo co w .lewa-kolumna, .prawa-kolumna); bordery oddzielające boxy; odstępy  */
     .tresc-strony {
-        background-color: white;
-        min-width: 0;
-        border-left: 1px solid #a2a9b1;
-        border-right: 1px solid #a2a9b1;
-        padding: 15px 20px 15px;
+        padding-right: 16px;
+        padding-left: 16px;
     }
 
-/* --------------NAGŁÓWEK-------------- */
-
-    /* .nagłówek -> ustawienie obok siebie w jednym wierszu; środkowanie; gap przedstawia przerwę pomiędzy itemami */
     .naglowek {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-
-    /* .menu-button -> wielkość kresek; kolor tła na jasno-szary; zmiana kursora na funkcjonowalny; ramka wokół; zaokrąglenie ramki; odstęp od lewej */
-    .menu-button {
-        font-size: 30px;
-        background-color: lightgray;
-        cursor: pointer;
-        border: solid 2px black;
-        border-radius: 5px;
-        margin-left: 20px;
-    }
-
-    /* .menu-kontener -> pozycja kontenera głównego menu */
-    .menu-kontener {
-        position: relative;
-        flex-shrink: 0;
-    }
-
-    /* .panel-menu -> pozycja wyświetlania się okna menu */
-    .panel-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 230px;
-        background: white;
-        border: 1px solid #a2a9b1;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-    }
-
-    /* .panel-menu.otwarte -> gdy otwieramy menu, wyświetla blok */
-    .panel-menu.otwarte {
-        display: block;
-    }
-
-    /* .panel-menu a -> wyświetla tekst w boxie, gdy otworzymy */
-    .panel-menu a {
-        display: block;
-        padding: 12px 16px;
-        color: black;
-        text-decoration: none;
-    }
-
-    /* .panel-menu a:hover -> zmiana koloru tła, gdy najedziemy na tekst */
-    .panel-menu a:hover {
-        background-color: #eaecf0;
-    }
-
-    /* .logo -> szerokość; wysokość; dopasowanie obrazu; odstęp od dołu */
-    .logo {
-        width: 150px;
-        height: 100px;
-        object-fit: contain;
-        margin-bottom: 10px;
-    }
-
-    /* .wyszukiwarka -> ustawienie po kolei wszystkich elementów wyszukiwarki; środkowanie; ustawianie szerokości na 500px lub 100% dostępnej wartości; min. szerokość; wysokość; ramka; tło; odstęp od lewej */
-    .wyszukiwarka {
-        display: flex;
-        align-items: center;
-        width: min(500px, 100%);
-        min-width: 0;
-        height: 40px;
-        border: 1px solid #a2a9b1;
-        background-color: white;
-        margin-left: 20px;
-    }
-
-    /* .wyszukiwarka:focus-within -> podświetla się na kolor niebieskawy, gdy ktoś na to kliknie; tworzy się cień na 1px */
-    .wyszukiwarka:focus-within {
-        border-color: #36c;
-        box-shadow: inset 0 0 0 1px #36c;
-    }
-
-    /* .wyszukiwarka input -> od lewej do prawej tekst; minimalna szerokość to 0; wysokość zajmuje 100% ramki; odstępy boczne; usunięcie ramki; brak dodatkowej obramówki; wielkość czcionki na 14px */
-    .wyszukiwarka input {
-        flex: 1;
-        min-width: 0;
-        height: 100%;
-        padding: 0 10px;
-        border: none;
-        outline: none;
-        font-size: 14px;
-    }
-
-    /* .wyszukiwarka button -> button zajmuje całą wyszukiwarkę (wysokość); odstępy boczne; usuwanie ramki; dodanie lewej ramki; tło; kolor tekstu; funkcjonalny kursor */
-    .wyszukiwarka button {
-        height: 100%;
-        padding: 0 12px;
-        border: none;
-        border-left: 1px solid #a2a9b1;
-        background-color: #f8f9fa;
-        color: #202122;
-        cursor: pointer;
-    }
-
-    /* .wyszukiwarka button:hover -> zmienia kolor tła na lekko szarawy tam gdzie jest lupa */
-    .wyszukiwarka button:hover {
-        background-color: #eaecf0;
-    }
-
-    /* .konto -> automatyczny odstęp od lewej; ustawienie po kolei; odstęp 30px; nowrap, aby link się nie zawijał do kolejnych wierszy*/
-    .konto {
-        margin-left: auto;
-        display: flex;
-        gap: 30px;
-        white-space: nowrap;
-    }
-
-    /* .konto -> dekoracja linków w sekcji konta */
-    .konto a {
-        color: #36c;
-        text-decoration: none;
-    }
-
-    /* .konto a:hover -> dekoracja linków w sekcji konta hover */
-    .konto a:hover {
-        text-decoration: underline;
-    }
-
-/* --------------NAVIGATION BAR-------------- */
-
-    /* .navbar ul -> wyświtlanie elementów w navigation bar */
-    .navbar ul {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
+        gap: 15px;
         flex-wrap: wrap;
     }
 
-    /* .navbar .od-prawej -> wyświetlanie pewnych elementów od prawej strony */
-    .navbar .od-prawej {
-        margin-left: auto;
+    .wyszukiwarka {
+        flex: 1 1 250px;
+        margin-left: 0;
     }
 
-    /* .navbar a -> dekoracja tekstu w navbarze */
-    .navbar a {
-        display: block;
-        padding: 15px;
-        color: black;
-        text-decoration: none;
-        position: relative;
+    .konto {
+        gap: 15px;
+    }
+}
+
+
+/* ==================================================
+   25. RESPONSYWNOŚĆ – TELEFONY
+================================================== */
+
+@media (max-width: 600px) {
+    .tresc-strony {
+        padding: 10px;
     }
 
-    /* .wyglad-button, .narzedzia-button -> dekoracja przycisków */
+    .naglowek {
+        gap: 10px;
+    }
+
+    .menu-button {
+        margin-left: 0;
+        font-size: 25px;
+    }
+
+    .logo {
+        width: 110px;
+        height: 75px;
+    }
+
+    .wyszukiwarka {
+        flex-basis: 100%;
+        order: 3;
+    }
+
+    .konto {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .navbar ul {
+        align-items: stretch;
+    }
+
+    .navbar a,
     .wyglad-button,
     .narzedzia-button {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 15px;
-        background: white;
-        border: none;
-        color: black;
-        font: inherit;
-        cursor: pointer;
-    }
-
-    /* .wyglad-button:hover, .narzedzia-button:hover -> wygląd przycisków gdy się hoveruje myszką */
-    .wyglad-button:hover,
-    .narzedzia-button:hover {
-        background-color: rgba(224, 211, 211, 0.514);
-    }
-
-    /* .navbar a::after -> utworzenie animacji w navbarze */
-    .navbar a::after {
-        content: "";
-        position: absolute;
-        left: 15px;
-        right: 15px;
-        bottom: 7px;
-        height: 1px;
-        background-color: black;
-        transform: scaleX(0);
-        transition: transform 0.2s ease;
-    }
-
-    /* .navbar a:hover::after -> gdy najedziesz wykona się animacja */
-    .navbar a:hover::after {
-        transform: scaleX(1);
-    }
-
-    /* --------------PANEL WYGLĄDU STRONY-------------- */
-
-        /* .panel-wygladu -> określa wygląd panelu oraz umiejscowienie */
-        .panel-wygladu {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 320px;
-            max-width: 100%;
-            height: 100vh;
-            padding: 20px;
-            overflow-y: auto;
-            background-color: white;
-            color: #202122;
-            border-left: 1px solid #a2a9b1;
-            box-shadow: -3px 0 10px rgba(0, 0, 0, 0.12);
-            z-index: 1000;
-            display: none;
-        }
-
-        /* .panel-wygladu.otwarty -> gdy otwieramy panel, to pojawia się box z tekstem */
-        .panel-wygladu.otwarty {
-            display: block;
-        }
-
-        /* .panel-naglowek -> wyświetlanie w odpiowiednim miejscu tekstu */
-        .panel-naglowek {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* .panel-naglowek h3 -> usuwamy domyślny margines */
-        .panel-naglowek h3 {
-            margin: 0;
-        }
-
-        /* #zamknij-wyglad -> gdy zamykamy okno klikając w "x", to wszystko znika */
-        #zamknij-wyglad {
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-        }
-
-        /* .panel-wygladu label -> ustawiamy pod sobą opcje do wyboru w boxie panelu wyglądu */
-        .panel-wygladu label {
-            display: block;
-            margin: 12px 0;
-            cursor: pointer;
-        }
-        
-            /* -------------USTAWIANIE WYGLĄDU STRONY-------------- */
-
-            /* ROZMIAR TEKSTU */
-            /* .tresc-strony.tekst-maly main -> ustawienie mniejszego rozmiaru tekstu */
-            .tresc-strony.tekst-maly main {
-                font-size: 14px;
-            }
-
-            /* .tresc-strony.tekst-duzy main -> ustawienie dużego rozmiaru tekstu */
-            .tresc-strony.tekst-duzy main {
-                font-size: 20px;
-            }
-
-            /* SZEROKOŚĆ STRONY */
-            /* .uklad-strony.strona-szeroka -> szerokość strony */
-            .uklad-strony.strona-szeroka {
-                grid-template-columns: minmax(0, 1fr) minmax(0, 1900px) minmax(0, 1fr);
-            }
-
-            /* TRYB CIEMNY */
-            /* body.tryb-ciemny -> ustawienie ciemnego motywu */
-            body.tryb-ciemny {
-                background-color: #101418;
-            }
-
-            /* .tryb-ciemny .uklad-strony, .tryb-ciemny .tresc-strony, .tryb-ciemny main, .tryb-ciemny footer -> ustawienie ciemnego motywu */
-            .tryb-ciemny .uklad-strony,
-            .tryb-ciemny .tresc-strony,
-            .tryb-ciemny main,
-            .tryb-ciemny footer {
-                background-color: #202122;
-                color: #eaecf0;
-            }
-
-            /* .tryb-ciemny .lewa-kolumna, .tryb-ciemny .prawa-kolumna -> ustawienie ciemnego motywu */
-            .tryb-ciemny .lewa-kolumna,
-            .tryb-ciemny .prawa-kolumna {
-                background-color: #101418;
-            }
-
-            /* .tryb-ciemny .tresc-strony -> ustawienie ciemnego motywu */
-            .tryb-ciemny .tresc-strony {
-                border-color: #54595d;
-            }
-
-            /* .tryb-ciemny .menu-button -> ustawienie ciemnego motywu menu-button */
-            .tryb-ciemny .menu-button {
-                background-color: #202122;
-                color: #eaecf0;
-                border-color: #54595d;
-            }
-
-            /* .tryb-ciemny .menu-button:hover -> ustawienie ciemnego motywu menu-button hover */
-            .tryb-ciemny .menu-button:hover {
-                background-color: #383a3d;
-            }
-
-            /* .tryb-ciemny .panel-menu -> ustawienie ciemnego motywu panelu menu */
-            .tryb-ciemny .panel-menu {
-                background-color: #202122;
-                border-color: #54595d;
-                color: #eaecf0;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-            }
-
-            /* .tryb-ciemny .panel-menu a -> ustawienie ciemnego motywu linków w rozwijanym menu */
-            .tryb-ciemny .panel-menu a {
-                background-color: #202122;
-                color: #eaecf0;
-            }
-
-            /* .tryb-ciemny .panel-menu a:hover -> ustawienie ciemnego motywu linków w rozwijanym menu hover */
-            .tryb-ciemny .panel-menu a:hover {
-                background-color: #383a3d;
-            }
-
-            /* .logo-ciemne -> domyślnie ukryte */
-            .logo-ciemne {
-                display: none;
-            }
-
-            /* .tryb-ciemny .logo-jasne -> domyślnie ukryte */
-            .tryb-ciemny .logo-jasne {
-                display: none;
-            }
-
-            /* .tryb-ciemny .logo-ciemne -> domyślnie wyświetlane */
-            .tryb-ciemny .logo-ciemne {
-                display: inline-block;
-            }
-
-            /* Wyszukiwarka w trybie ciemnym */
-            .tryb-ciemny .wyszukiwarka input {
-                background-color: #202122;
-                color: #eaecf0;
-                border-color: #54595d;
-            }
-            
-            /* .tryb-ciemny .wyszukiwarka input::placeholder -> ustawienie ciemnego motywu na wyszukiwarkę */
-            .tryb-ciemny .wyszukiwarka input::placeholder {
-                color: #a2a9b1;
-            }
-
-            /* .tryb-ciemny .wyszukiwarka button -> ustawienie ciemnego motywu na przycisk wyszukiwarki */
-            .tryb-ciemny .wyszukiwarka button {
-                background-color: #202122;
-                color: #eaecf0;
-                border-color: #54595d;
-            }
-
-            /* .tryb-ciemny .wyszukiwarka button:hover -> ustawienie ciemnego motywu na przycisk wyszukiwarki hover */
-            .tryb-ciemny .wyszukiwarka button:hover {
-                background-color: #383a3d;
-            }
-
-            /* .tryb-ciemny .navbar a, .tryb-ciemny .wyglad-button, .tryb-ciemny .narzedzia-button -> ustawienie ciemnego motywu */
-            .tryb-ciemny .navbar a,
-            .tryb-ciemny .wyglad-button,
-            .tryb-ciemny .narzedzia-button {
-                color: #eaecf0;
-                background-color: #202122;
-            }
-
-            /* .tryb-ciemny .navbar a:hover, .tryb-ciemny .wyglad-button:hover, .tryb-ciemny .narzedzia-button:hover -> ustawienie ciemnego motywu */
-            .tryb-ciemny .navbar a:hover,
-            .tryb-ciemny .wyglad-button:hover,
-            .tryb-ciemny .narzedzia-button:hover {
-                background-color: #383a3d;
-            }
-
-            /* .tryb-ciemny .navbar a::after -> ustawienie ciemnego motywu */
-            .tryb-ciemny .navbar a::after {
-                background-color: #eaecf0;
-            }
-
-            /* .tryb-ciemny .panel-wygladu -> ustawienie ciemnego motywu */
-            .tryb-ciemny .panel-wygladu {
-                background-color: #202122;
-                color: #eaecf0;
-                border-color: #54595d;
-            }
-
-            /* .tryb-ciemny .panel-wygladu hr -> ustawienie ciemnego motywu */
-            .tryb-ciemny .panel-wygladu hr {
-                border-color: #54595d;
-            }
-
-            /* .tryb-ciemny #zamknij-wyglad -> ustawienie ciemnego motywu "x" */
-            .tryb-ciemny #zamknij-wyglad {
-                color: #ffffff;
-            }
-
-            /* .tryb-ciemny #zamknij-wyglad:hover -> ustawienie ciemnego motywu "x" hover */
-            .tryb-ciemny #zamknij-wyglad:hover {
-                background-color: #383a3d;
-            }
-            /* .tryb-ciemny .stopka -> ustawienie ciemnego motywu */
-            .tryb-ciemny .stopka {
-                border-color: #54595d;
-            }
-
-            /* .tryb-ciemny .stopka-dol -> ustawienie ciemnego motywu */
-            .tryb-ciemny .stopka-dol {
-                color: #c8ccd1;
-            }
-
-            /* .tryb-ciemny .formularz-rejestracji, .tryb-ciemny .formularz-logowania -> ustawienie ciemnego motywu dla formularzy */
-            .tryb-ciemny .formularz-rejestracji,
-            .tryb-ciemny .formularz-logowania {
-                background-color: #202122;
-                color: #eaecf0;
-            }
-
-            /* .tryb-ciemny .formularz-rejestracji input, .tryb-ciemny .formularz-logowania input -> ustawienie ciemnego motywu dla pól formularzy */
-            .tryb-ciemny .formularz-rejestracji input,
-            .tryb-ciemny .formularz-logowania input {
-                background-color: #101418;
-                color: #eaecf0;
-                border-color: #72777d;
-            }
-
-
-/* --------------FORMULARZ REJESTRACYJNY I LOGUJĄCY-------------- */
-
-    /* .formularz-rejestracji -> wygląd boxa */
-    .formularz-rejestracji {
-        max-width: 520px;
-        margin: 35px auto;
-        padding: 28px;
-        border: 1px solid #a2a9b1;
-        background: white;
-    }
-
-    /* .formularz-rejestracji h1 -> ustawienie h1 */
-    .formularz-rejestracji h1 {
-        margin-top: 0;
-        font-size: 28px;
-        font-weight: normal;
-    }
-
-    /* .opis-rejestracji -> ustawienie wyglądu opisu rejestracji */
-    .opis-rejestracji {
-        color: #54595d;
-        line-height: 1.5;
-        margin-bottom: 25px;
-    }
-
-    /* .pole-formularza -> pole boxów do wpisywania dla każdej opcji */
-    .pole-formularza {
-        margin-bottom: 20px;
-    }
-
-    /* .pole-formularza label -> wygląd boxów do wpisywania */
-    .pole-formularza label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 7px;
-    }
-
-    /* .pole-formularza input -> wygląd inputu w formularzu */
-    .pole-formularza input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #72777d;
-        border-radius: 2px;
-        font: inherit;
-    }
-
-    /* .pole-formularza input:focus -> Gdy okno kliknięte to tworzy otoczkę */
-    .pole-formularza input:focus {
-        outline: 2px solid #36c;
-        outline-offset: 1px;
-    }
-
-    /* .pomoc-formularza -> mała informacja pod nazwą użytkownika */
-    .pomoc-formularza {
-        display: block;
-        color: #54595d;
-        font-size: 13px;
-        margin-top: 6px;
-    }
-
-    /* .przycisk-rejestracji -> modelowanie przycisku rejestracji */
-    .przycisk-rejestracji {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #36c;
-        border-radius: 2px;
-        background: #36c;
-        color: white;
-        font: inherit;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    /* .przycisk-rejestracji:hover -> gdy hoverujemy na przycisk zmienia się na niebiesko */
-    .przycisk-rejestracji:hover {
-        background: #2a4b8d;
-    }
-
-    /* .informacja-logowanie -> informacja na dole, wyśrodkowana */
-    .informacja-logowanie {
-        margin-top: 22px;
-        text-align: center;
+        padding: 11px;
         font-size: 14px;
     }
 
-    /* .formularz-logowania -> wygląd boxa */
+    .navbar .od-prawej {
+        margin-left: 0;
+    }
+
+    .panel-wygladu {
+        width: 100%;
+    }
+
+    .formularz-rejestracji,
     .formularz-logowania {
-        max-width: 480px;
-        margin: 40px auto;
-        padding: 28px;
-        border: 1px solid #a2a9b1;
-        background: white;
+        margin: 20px auto;
+        padding: 18px;
     }
 
-    /* .formularz-logowania h1 -> ustawienie h1 */
-    .formularz-logowania h1 {
-        margin-top: 0;
-        font-size: 28px;
-        font-weight: normal;
+    .tworzenie-artykulu h1 {
+        font-size: 25px;
     }
 
-    /* .opis-logowania -> ustawienie wyglądu opisu rejestracji */
-    .opis-logowania {
-        color: #54595d;
-        line-height: 1.5;
-        margin-bottom: 25px;
+    .tresc-podgladu h1 {
+        font-size: 25px;
     }
 
-    /* .opcja-zapamietania -> mały checkbox, umieszczony pod hasłem */
-    .opcja-zapamietania {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 22px;
-        font-size: 14px;
+    .zdjecie-artykulu.polozenie-prawo,
+    .zdjecie-artykulu.polozenie-lewo {
+        float: none;
+        max-width: 100%;
+        margin: 20px auto;
     }
 
-    /* .przycisk-logowania -> modelowanie przycisku logowania */
-    .przycisk-logowania {
+    .przyciski-zdjecia {
+        flex-direction: column;
+    }
+
+    .przyciski-zdjecia button {
         width: 100%;
-        padding: 12px;
-        border: 1px solid #36c;
-        border-radius: 2px;
-        background: #36c;
-        color: white;
-        font: inherit;
-        font-weight: bold;
-        cursor: pointer;
     }
+}
 
-    /* .przycisk-logowania:hover -> gdy hoverujemy na przycisk to zmienia się kolor */
-    .przycisk-logowania:hover {
-        background: #2a4b8d;
+
+/* ==================================================
+   26. OGRANICZENIE ANIMACJI
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
-
-    /* .informacja-rejestracja -> informacja na dolnym środku formularza */
-    .informacja-rejestracja {
-        margin-top: 22px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-/* --------------STOPKA-------------- */
-
-    /* .stopka -> Stopka Dynamopedii */
-    .stopka {
-        margin-top: 40px;
-        padding: 20px 0 15px;
-        border-top: 1px solid #a2a9b1;
-        color: #202122;
-        font-size: 13px;
-        line-height: 1.6;
-    }
-
-    /* .stopka-informacje -> margines stopki */
-    .stopka-informacje {
-        margin-bottom: 12px;
-    }
-
-    /* .stopka-linki -> wyświetlanie linków */
-    .stopka-linki {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px 18px;
-        margin-bottom: 12px;
-    }
-
-    /* .stopka-linki a -> kolor linków */
-    .stopka-linki a {
-        color: #36c;
-        text-decoration: none;
-    }
-
-    /* .stopka-linki a:hover -> pokazuje linię poziomą, gdy hoverujemy na link */
-    .stopka-linki a:hover {
-        text-decoration: underline;
-    }
-
-    /* .stopka-dol -> dolny tekst w stopce */
-    .stopka-dol {
-        color: #54595d;
-        font-size: 12px;
-    }
+}

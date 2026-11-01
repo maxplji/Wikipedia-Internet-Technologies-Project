@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tworzenie artykułu - Dynamopedia</title>
+
+    <link rel="stylesheet" href="style_program.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <div class="uklad-strony">
+
+        <aside class="lewa-kolumna"></aside>
+
+        <div class="tresc-strony">
+
+            <div id="naglowek"></div>
+            <div id="navbar"></div>
+
+            <main class="tworzenie-artykulu">
+
+                <h1>Tworzenie artykułu</h1>
+
+                <p class="opis-tworzenia">
+                    Witaj w kreatorze artykułów Dynamopedii.
+                    Wypełnij poniższe pola, aby rozpocząć tworzenie nowego artykułu.
+                </p>
+
+                <hr>
+
+                <section class="edytor-artykulu">
+
+                    <h2>Tytuł artykułu</h2>
+
+                    <input
+                        type="text"
+                        id="tytul-artykulu"
+                        placeholder="Wpisz tytuł artykułu..."
+                    >
+
+                    <h2>Treść artykułu</h2>
+
+                    <div class="pasek-formatowania">
+
+                        <button type="button" data-format="bold" title="Pogrubienie">
+                            <i class="bi bi-type-bold"></i>
+                        </button>
+
+                        <button type="button" data-format="italic" title="Kursywa">
+                            <i class="bi bi-type-italic"></i>
+                        </button>
+
+                        <button type="button" data-format="underline" title="Podkreślenie">
+                            <i class="bi bi-type-underline"></i>
+                        </button>
+
+                        <button type="button" data-format="heading" title="Nagłówek">
+                            <i class="bi bi-type-h2"></i>
+                        </button>
+
+                        <button type="button" data-format="list" title="Lista punktowana">
+                            <i class="bi bi-list-ul"></i>
+                        </button>
+
+                        <button type="button" data-format="link" title="Wstaw link">
+                            <i class="bi bi-link-45deg"></i>
+                        </button>
+
+                        <button type="button"
+                            class="dodaj-zdjecie-button"
+                            data-format="image"
+                            title="Dodaj zdjęcie">
+                            <i class="bi bi-image"></i>
+                        </button>
+
+                    </div>
+
+                    <div id="panel-dodawania-zdjecia" class="panel-dodawania-zdjecia" hidden>
+
+                        <h3>Dodawanie zdjęcia</h3>
+
+                        <label for="plik-zdjecia">Wybierz zdjęcie z komputera:</label>
+                        <input type="file" id="plik-zdjecia" accept="image/*">
+
+                        <p class="lub">lub</p>
+
+                        <label for="url-zdjecia">Wklej adres URL zdjęcia:</label>
+                        <input type="url" id="url-zdjecia"
+                            placeholder="https://przyklad.pl/zdjecie.jpg">
+
+                        <label for="opis-zdjecia">Tekst alternatywny:</label>
+                        <input type="text" id="opis-zdjecia"
+                            placeholder="Opisz, co przedstawia zdjęcie">
+
+                        <label for="podpis-zdjecia">Podpis zdjęcia:</label>
+                        <input type="text" id="podpis-zdjecia"
+                            placeholder="Podpis wyświetlany pod zdjęciem">
+
+                        <label for="polozenie-zdjecia">Położenie zdjęcia:</label>
+                        <select id="polozenie-zdjecia">
+                            <option value="prawo">Po prawej stronie</option>
+                            <option value="srodek">Wyśrodkowane</option>
+                            <option value="lewo">Po lewej stronie</option>
+                        </select>
+
+                        <div class="przyciski-zdjecia">
+                            <button type="button" id="wstaw-zdjecie">
+                                Wstaw zdjęcie
+                            </button>
+
+                            <button type="button" id="anuluj-zdjecie">
+                                Anuluj
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <textarea
+                        id="tresc-artykulu"
+                        placeholder="Rozpocznij pisanie artykułu..."
+                    ></textarea>
+
+                    <div class="przyciski-edytora">
+
+                        <button type="button" class="zapisz-button">
+                            <i class="bi bi-save"></i>
+                            Zapisz wersję roboczą
+                        </button>
+                    </div>
+
+                </section>
+
+                <h2 class="naglowek-podgladu">Podgląd artykułu</h2>
+                
+               <section id="podglad-artykulu" class="podglad-artykulu">
+                    <article class="tresc-podgladu">
+                        <h1 id="podglad-tytulu">Tytuł artykułu</h1>
+                        <div id="podglad-tresci"></div>
+                    </article>
+                </section>
+
+            </main>
+
+            <footer>
+                <div id="stopka"></div>
+            </footer>
+
+        </div>
+
+        <aside class="prawa-kolumna"></aside>
+
+    </div>
+
+    <script src="scripts.js"></script>
+
+    <script>
+        fetch("header.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
+            });
+
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("navbar").innerHTML = html;
+                zastosujUstawieniaWygladu();
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("stopka").innerHTML = html;
+            });
+    </script>
+
+</body>
+</html>
