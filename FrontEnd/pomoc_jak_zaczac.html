@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Nazwa okna -->
+    <title>Utwórz nowe konto - Dynamopedia</title>
+
+    <!-- web-icon -->
+    <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
+
+    <!-- połączenie z CSS -->
+    <link rel="stylesheet" href="style_program.css">
+
+    <!-- połączenie z JS -->
+    <script src="scripts.js" defer></script>
+
+    <!-- połączenie z ikonkami -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="uklad-strony">
+
+        <!-- klasa zarządzająca lewą kolumną -->
+        <aside class="lewa-kolumna"></aside>
+
+        <!-- klasa zarządzająca ułożeniem treści na stronie -->
+        <div class="tresc-strony">
+
+        <header>
+            <div id="naglowek"></div>
+
+            <!-- skrypt tworzący nagłówek -->
+            <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
+
+                const przyciskMenu = document.getElementById("menu-toggle");
+                const panelMenu = document.getElementById("panel-menu");
+
+                przyciskMenu.addEventListener("click", function () {
+                    panelMenu.classList.toggle("otwarte");
+                });
+            });
+            </script>
+
+        </header>
+        
+        <!-- Klasa Navbar -->
+        <div id="navbar"></div>
+
+        <script>
+            fetch("navbar.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("navbar").innerHTML = html;
+                    zastosujUstawieniaWygladu();
+                });
+        </script>
+
+            
+        <!-- Główna strona -->
+        <main>
+
+            <!-- Wprowadzenie -->
+            <section class="pomoc-wprowadzenie">
+                <h1>Jak zacząć?</h1>
+
+                <p>
+                    Witaj w Dynamopedii! Jeżeli jesteś tutaj po raz pierwszy,
+                    ten poradnik pomoże Ci zapoznać się z naszą stroną.
+                    Dowiesz się, jak poruszać się po Dynamopedii, odnajdywać
+                    interesujące Cię informacje oraz korzystać z dostępnych
+                    funkcji.
+                </p>
+            </section>
+
+            <!-- Układ strony -->
+            <section class="pomoc-sekcja">
+                <h2>Układ strony</h2>
+
+                <p>
+                    Dynamopedia składa się z kilku podstawowych elementów,
+                    które ułatwiają korzystanie z encyklopedii.
+                    Wśród nich znajdują się:
+                </p>
+
+                <ul>
+                    <li><strong>Nagłówek</strong> – znajduje się w górnej części strony.</li>
+                    <li><strong>Menu nawigacyjne</strong> – umożliwia przechodzenie między poszczególnymi częściami Dynamopedii.</li>
+                    <li><strong>Główna zawartość</strong> – tutaj wyświetlane są artykuły i inne informacje.</li>
+                    <li><strong>Stopka</strong> – zawiera dodatkowe informacje i przydatne odnośniki.</li>
+                </ul>
+            </section>
+
+            <!-- Menu nawigacyjne -->
+            <section class="pomoc-sekcja">
+                <h2>Menu nawigacyjne</h2>
+
+                <p>
+                    Menu nawigacyjne znajduje się pod nagłówkiem strony.
+                    Umożliwia szybkie przechodzenie do najważniejszych
+                    części Dynamopedii. Dzięki niemu możesz łatwiej
+                    odnaleźć interesujące Cię informacje i funkcje.
+                </p>
+
+                <p>
+                    Poszczególne elementy menu prowadzą do odpowiednich
+                    podstron lub udostępniają dodatkowe opcje.
+                    Warto zapoznać się z ich przeznaczeniem, aby
+                    sprawniej korzystać z encyklopedii.
+                </p>
+            </section>
+
+            <!-- Wyszukiwarka -->
+            <section class="pomoc-sekcja">
+                <h2>Wyszukiwarka</h2>
+
+                <p>
+                    Wyszukiwarka umożliwia szybkie odnajdywanie artykułów
+                    i informacji znajdujących się w Dynamopedii.
+                    Znajduje się w górnej części strony, w nagłówku.
+                </p>
+
+                <p>
+                    Aby wyszukać interesujący Cię temat, wpisz jego nazwę
+                    w polu wyszukiwania, a następnie uruchom wyszukiwanie
+                    za pomocą odpowiedniego przycisku.
+                </p>
+
+                <p>
+                    Warto wpisywać możliwie konkretne hasła, które
+                    najlepiej opisują poszukiwany temat.
+                </p>
+            </section>
+
+            <!-- Menu Narzędzia -->
+            <section class="pomoc-sekcja">
+                <h2>Menu Narzędzia</h2>
+
+                <p>
+                    Menu „Narzędzia” udostępnia dodatkowe funkcje,
+                    które ułatwiają korzystanie z Dynamopedii.
+                    Możesz je otworzyć, wybierając odpowiednią
+                    pozycję w menu nawigacyjnym.
+                </p>
+
+                <h3>Ustawienia wyglądu</h3>
+
+                <p>
+                    W ustawieniach wyglądu możesz dostosować sposób
+                    wyświetlania strony do swoich preferencji.
+                    Dostępne opcje pozwalają między innymi zmienić
+                    motyw kolorystyczny oraz rozmiar tekstu.
+                </p>
+
+                <h3>Pozostałe narzędzia</h3>
+
+                <p>
+                    Menu może zawierać również inne przydatne funkcje.
+                    Ich zadaniem jest ułatwienie korzystania
+                    z poszczególnych elementów Dynamopedii.
+                </p>
+            </section>
+
+            <!-- Kategorie -->
+            <section class="pomoc-sekcja">
+                <h2>Kategorie</h2>
+
+                <p>
+                    Kategorie służą do grupowania artykułów dotyczących
+                    podobnych zagadnień. Dzięki nim możesz przeglądać
+                    Dynamopedię według interesujących Cię tematów,
+                    bez konieczności korzystania z wyszukiwarki.
+                </p>
+
+                <p>
+                    Wybierz interesującą Cię kategorię, aby zobaczyć
+                    przypisane do niej artykuły. Niektóre zagadnienia
+                    mogą być podzielone na bardziej szczegółowe
+                    podkategorie, które ułatwiają odnajdywanie
+                    konkretnych informacji.
+                </p>
+            </section>
+
+            <!-- Konto użytkownika -->
+            <section class="pomoc-sekcja">
+                <h2>Konto użytkownika</h2>
+
+                <p>
+                    Dynamopedia umożliwia utworzenie własnego konta
+                    użytkownika. Dzięki temu możesz korzystać
+                    z funkcji przeznaczonych dla zarejestrowanych
+                    użytkowników.
+                </p>
+
+                <h3>Rejestracja</h3>
+
+                <p>
+                    Aby utworzyć konto, wybierz opcję rejestracji
+                    dostępną w nagłówku strony. Następnie wypełnij
+                    formularz, podając wymagane informacje,
+                    i zatwierdź jego wysłanie.
+                </p>
+
+                <h3>Logowanie</h3>
+
+                <p>
+                    Jeżeli posiadasz już konto, wybierz opcję
+                    logowania. Wprowadź dane użyte podczas
+                    rejestracji, aby uzyskać dostęp do swojego konta.
+                </p>
+            </section>
+
+            <!-- Stopka strony -->
+            <section class="pomoc-sekcja">
+                <h2>Stopka strony</h2>
+
+                <p>
+                    Stopka znajduje się na samym dole każdej podstrony
+                    Dynamopedii. Zawiera dodatkowe informacje
+                    oraz odnośniki, które mogą być przydatne
+                    podczas korzystania z encyklopedii.
+                </p>
+
+                <p>
+                    Możesz znaleźć w niej między innymi:
+                </p>
+
+                <ul>
+                    <li><strong>O Dynamopedii</strong> – informacje o projekcie i jego celu.</li>
+                    <li><strong>Kontakt</strong> – sposób na skontaktowanie się z twórcami Dynamopedii.</li>
+                    <li><strong>Polityka prywatności</strong> – informacje dotyczące prywatności i przetwarzania danych.</li>
+                </ul>
+
+                <p>
+                    Jeżeli szukasz informacji o projekcie lub potrzebujesz
+                    skontaktować się z jego twórcami, stopka jest dobrym
+                    miejscem, od którego możesz zacząć.
+                </p>
+            </section>
+
+            <!-- Na zakończenie -->
+            <section class="pomoc-sekcja">
+                <h2>Na zakończenie</h2>
+
+                <p>
+                    Teraz znasz już podstawowe elementy Dynamopedii
+                    i wiesz, jak poruszać się po jej stronach.
+                    Możesz korzystać z wyszukiwarki, przeglądać
+                    kategorie oraz odkrywać dostępne funkcje.
+                </p>
+
+                <p>
+                    Zachęcamy do samodzielnego poznawania Dynamopedii
+                    i odkrywania wiedzy o układach dynamicznych.
+                    Mamy nadzieję, że korzystanie z encyklopedii
+                    będzie dla Ciebie łatwe i przyjemne!
+                </p>
+            </section>
+
+</main>
+
+        <!-- Klasa zarządzająca stopką -->
+        <div id="stopka"></div>
+
+        <script>
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("stopka").innerHTML = html;
+                })
+        </script>
+
+        </div>
+        
+        <!-- klasa zarządzająca prawą kolumną -->
+        <aside class="prawa-kolumna"></aside>
+    
+    </div>
+
+</body>
+</html>

@@ -1,79 +1,174 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Nazwa okna -->
-    <title>Utwórz nowe konto - Dynamopedia</title>
+    <title>Polityka prywatności - Dynamopedia</title>
 
-    <!-- web-icon -->
     <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
-
-    <!-- połączenie z CSS -->
     <link rel="stylesheet" href="style_program.css">
-
-    <!-- połączenie z JS -->
-    <script src="scripts.js" defer></script>
-
-    <!-- połączenie z ikonkami -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="scripts.js" defer></script>
 </head>
 
 <body>
+
     <div class="uklad-strony">
 
-        <!-- klasa zarządzająca lewą kolumną -->
         <aside class="lewa-kolumna"></aside>
 
-        <!-- klasa zarządzająca ułożeniem treści na stronie -->
         <div class="tresc-strony">
 
-        <header>
-            <div id="naglowek"></div>
+            <header>
+                <div id="naglowek"></div>
+            </header>
 
-            <!-- skrypt tworzący nagłówek -->
-            <script>
-            fetch("header.html")
-                .then(response => response.text())
-                .then(html => {
-                document.getElementById("naglowek").innerHTML = html;
+            <div id="navbar"></div>
 
-                const przyciskMenu = document.getElementById("menu-toggle");
-                const panelMenu = document.getElementById("panel-menu");
+            <main class="podstrona-informacyjna">
 
-                przyciskMenu.addEventListener("click", function () {
-                    panelMenu.classList.toggle("otwarte");
-                });
-            });
-            </script>
+                <h1>Polityka prywatności</h1>
 
-            <hr>
+                <p class="wstep-podstrony">
+                    Niniejsza polityka prywatności opisuje zasady dotyczące
+                    ochrony danych i prywatności użytkowników serwisu Dynamopedia.
+                </p>
 
-        </header>
+                <section class="sekcja-informacyjna">
 
-        <!-- Główna strona -->
-        <main>
-            
-        </main>
+                    <h2>1. Informacje ogólne</h2>
 
-        <!-- Klasa zarządzająca stopką -->
-        <div id="stopka"></div>
+                    <p>
+                        Dynamopedia jest serwisem internetowym, którego celem
+                        jest udostępnianie użytkownikom treści edukacyjnych
+                        i informacyjnych.
+                    </p>
 
-        <script>
-            fetch("footer.html")
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById("stopka").innerHTML = html;
-                })
-        </script>
+                    <p>
+                        Dbamy o prywatność osób korzystających z serwisu
+                        i dokładamy starań, aby informacje użytkowników
+                        były odpowiednio chronione.
+                    </p>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>2. Dane użytkowników</h2>
+
+                    <p>
+                        W zależności od dostępnych funkcjonalności serwis
+                        może przetwarzać dane podane przez użytkowników,
+                        na przykład podczas rejestracji konta lub kontaktu
+                        z administracją.
+                    </p>
+
+                    <p>
+                        Zakres przetwarzanych danych będzie zależał
+                        od funkcji rzeczywiście dostępnych w serwisie.
+                    </p>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>3. Cel przetwarzania danych</h2>
+
+                    <p>
+                        Dane mogą być wykorzystywane w celu:
+                    </p>
+
+                    <ul>
+                        <li>umożliwienia korzystania z funkcji serwisu,</li>
+                        <li>obsługi kont użytkowników,</li>
+                        <li>odpowiadania na wiadomości i pytania,</li>
+                        <li>zapewnienia prawidłowego działania strony.</li>
+                    </ul>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>4. Pliki cookies</h2>
+
+                    <p>
+                        Serwis może wykorzystywać pliki cookies lub podobne
+                        technologie, jeżeli są potrzebne do prawidłowego
+                        działania jego funkcji.
+                    </p>
+
+                    <p>
+                        Szczegółowe informacje o wykorzystywanych plikach
+                        cookies zostaną uzupełnione zgodnie z faktycznym
+                        sposobem działania serwisu.
+                    </p>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>5. Bezpieczeństwo danych</h2>
+
+                    <p>
+                        Podejmujemy działania mające na celu ochronę danych
+                        przed nieuprawnionym dostępem, utratą lub niewłaściwym
+                        wykorzystaniem.
+                    </p>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>6. Prawa użytkowników</h2>
+
+                    <p>
+                        Osobom, których dane dotyczą, mogą przysługiwać
+                        prawa wynikające z obowiązujących przepisów
+                        o ochronie danych osobowych, w tym RODO.
+                    </p>
+
+                    <p>
+                        Zakres tych praw zależy od podstawy i okoliczności
+                        przetwarzania danych.
+                    </p>
+
+                </section>
+
+            </main>
+
+            <footer>
+                <div id="stopka"></div>
+            </footer>
 
         </div>
-        
-        <!-- klasa zarządzająca prawą kolumną -->
+
         <aside class="prawa-kolumna"></aside>
-    
+
     </div>
+
+    <script>
+        fetch("header.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
+            });
+
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("navbar").innerHTML = html;
+                zastosujUstawieniaWygladu();
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("stopka").innerHTML = html;
+            });
+    </script>
 
 </body>
 </html>

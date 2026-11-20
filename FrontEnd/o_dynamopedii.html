@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>O Dynamopedii - Dynamopedia</title>
+
+    <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
+    <link rel="stylesheet" href="style_program.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="scripts.js" defer></script>
+</head>
+
+<body>
+
+    <div class="uklad-strony">
+
+        <aside class="lewa-kolumna"></aside>
+
+        <div class="tresc-strony">
+
+            <header>
+                <div id="naglowek"></div>
+            </header>
+
+            <div id="navbar"></div>
+
+            <main class="podstrona-informacyjna">
+
+                <h1>O Dynamopedii</h1>
+
+                <p class="wstep-podstrony">
+                    Witamy w Dynamopedii – miejscu, w którym wiedza,
+                    ciekawość i chęć odkrywania świata spotykają się
+                    w jednym serwisie internetowym.
+                </p>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>1. Czym jest Dynamopedia?</h2>
+
+                    <p>
+                        Dynamopedia to projekt internetowy, którego
+                        głównym celem jest gromadzenie i udostępnianie
+                        informacji o tematyce układów dynamicznych.
+                    </p>
+
+                    <p>
+                        Serwis ma umożliwiać użytkownikom poznawanie
+                        nowych zagadnień, poszerzanie wiedzy oraz
+                        dzielenie się własnymi opracowaniami.
+                    </p>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>2. Cel projektu</h2>
+
+                    <p>
+                        Głównym założeniem Dynamopedii jest stworzenie
+                        przejrzystej i przyjaznej przestrzeni, w której
+                        informacje będą przedstawiane w uporządkowany
+                        i przystępny sposób.
+                    </p>
+
+                    <p>
+                        Chcemy rozwijać miejsce sprzyjające zdobywaniu
+                        wiedzy, odkrywaniu zainteresowań i wymianie
+                        informacji.
+                    </p>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>3. Możliwości serwisu</h2>
+
+                    <p>
+                        Dynamopedia jest rozwijana z myślą o funkcjach,
+                        które ułatwiają korzystanie z wiedzy i tworzenie
+                        własnych treści o tematyce układów dynamicznych.
+                    </p>
+
+                    <ul>
+                        <li>przeglądanie artykułów i informacji,</li>
+                        <li>wyszukiwanie interesujących zagadnień,</li>
+                        <li>tworzenie własnych artykułów,</li>
+                        <li>formatowanie tekstu i dodawanie zdjęć,</li>
+                        <li>korzystanie z konta użytkownika,</li>
+                        <li>dostosowywanie wyglądu strony.</li>
+                    </ul>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>4. Rozwój Dynamopedii</h2>
+
+                    <p>
+                        Dynamopedia jest projektem, który będzie
+                        stopniowo rozwijany. Wraz z jego rozwojem
+                        mogą pojawiać się nowe funkcje, ulepszenia
+                        oraz kolejne możliwości dla użytkowników.
+                    </p>
+
+                    <p>
+                        Zależy nam na tym, aby serwis był coraz
+                        bardziej funkcjonalny, czytelny i wygodny
+                        w użytkowaniu.
+                    </p>
+
+                </section>
+
+                <section class="sekcja-informacyjna">
+
+                    <h2>5. Kontakt</h2>
+
+                    <p>
+                        Masz pytania, pomysły lub sugestie dotyczące
+                        rozwoju Dynamopedii? Zachęcamy do kontaktu
+                        z administracją serwisu.
+                    </p>
+
+                    <a href="kontakt.html">
+                        Przejdź do strony kontaktowej
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </section>
+
+            </main>
+
+            <footer>
+                <div id="stopka"></div>
+            </footer>
+
+        </div>
+
+        <aside class="prawa-kolumna"></aside>
+
+    </div>
+
+    <script>
+        fetch("header.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
+            });
+
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("navbar").innerHTML = html;
+                zastosujUstawieniaWygladu();
+            });
+
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("stopka").innerHTML = html;
+            });
+    </script>
+
+</body>
+</html>

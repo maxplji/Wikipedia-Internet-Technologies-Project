@@ -207,6 +207,23 @@ function formatujTekst(tekst) {
         "<u>$1</u>"
     );
 
+    // Linki wewnętrzne Dynamopedii [[Tytuł|opis]] lub [[Tytuł]]
+    wynik = wynik.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, function (_, tytulHTML, opis) {
+        const tytul = tytulHTML.trim()
+            .replace(/&amp;/g, "&")
+            .replace(/&lt;/g, "<")
+            .replace(/&gt;/g, ">")
+            .replace(/&quot;/g, '"');
+
+        const etykieta = (opis || tytulHTML).trim();
+
+        if (!tytul) return "";
+
+        const adres = "artykul.html?tytul=" + encodeURIComponent(tytul);
+
+        return `<a href="${adres}">${etykieta}</a>`;
+    });
+
     // Linki: [https://adres.pl opis]
     wynik = wynik.replace(
         /\[(https?:\/\/[^\s\]]+)(?:\s+([^\]]+))?\]/g,
@@ -401,6 +418,22 @@ document.addEventListener("click", function (event) {
             tekstDoWstawienia = `* ${zaznaczonyTekst || "Element listy"}`;
             break;
 
+                    case "internal-link": {
+            const tytul = prompt("Podaj tytuł artykułu, do którego ma prowadzić link:");
+
+            if (!tytul || !tytul.trim()) return;
+
+            const opis = prompt(
+                "Podaj tekst wyświetlany w linku:",
+                zaznaczonyTekst || tytul.trim()
+            );
+
+            if (opis === null) return;
+
+            tekstDoWstawienia = `[[${tytul.trim()}|${opis.trim() || tytul.trim()}]]`;
+            break;
+        }
+
         case "link": {
             const adres = prompt("Podaj adres strony:");
 
@@ -548,4 +581,15 @@ function dodajZdjecie() {
 document.addEventListener("DOMContentLoaded", function () {
     zastosujUstawieniaWygladu();
     aktualizujPodglad();
+});
+
+
+/* =========================================================
+   14. DRUKOWANIE ARTYKUŁU
+========================================================= */
+
+document.addEventListener("click", function (event) {
+    if (event.target.closest("#drukuj-artykul")) {
+        window.print();
+    }
 });

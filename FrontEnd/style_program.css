@@ -265,19 +265,21 @@ a {
     text-decoration: none;
 }
 
-.navbar a::after {
+.navbar a::after,
+.panel-narzedzi button::after {
     position: absolute;
     right: 15px;
     bottom: 7px;
     left: 15px;
     height: 1px;
-    background-color: var(--kolor-tekstu);
+    background-color: currentColor;
     content: "";
     transform: scaleX(0);
     transition: transform 0.2s ease;
 }
 
-.navbar a:hover::after {
+.navbar a:hover::after,
+.panel-narzedzi button:hover::after {
     transform: scaleX(1);
 }
 
@@ -297,6 +299,7 @@ a {
 .narzedzia-button:hover {
     background-color: rgba(224, 211, 211, 0.514);
 }
+
 
 
 /* ==================================================
@@ -323,14 +326,27 @@ a {
     display: block;
 }
 
-.panel-narzedzi a {
-    display: block;
+/* Wspólny wygląd linków i przycisków */
+.panel-narzedzi a,
+.panel-narzedzi button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
     padding: 12px;
+    border: none;
+    background-color: var(--kolor-tla);
     color: var(--kolor-tekstu);
+    font: inherit;
+    text-align: left;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.panel-narzedzi a:hover {
+/* Efekt po najechaniu kursorem */
+.panel-narzedzi a:hover,
+.panel-narzedzi button:hover {
     background-color: var(--kolor-tla-szarego);
 }
 
@@ -844,13 +860,15 @@ body.tryb-ciemny {
 }
 
 .tryb-ciemny .panel-menu a,
-.tryb-ciemny .panel-narzedzi a {
+.tryb-ciemny .panel-narzedzi a,
+.tryb-ciemny .panel-narzedzi button {
     background-color: var(--ciemne-tlo);
     color: var(--ciemny-tekst);
 }
 
 .tryb-ciemny .panel-menu a:hover,
-.tryb-ciemny .panel-narzedzi a:hover {
+.tryb-ciemny .panel-narzedzi a:hover,
+.tryb-ciemny .panel-narzedzi button:hover {
     background-color: var(--ciemne-tlo-hover);
 }
 
@@ -1162,5 +1180,288 @@ body.tryb-ciemny {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+
+
+/* ==================================================
+   27. PODSTRONY INFORMACYJNE
+================================================== */
+
+.podstrona-informacyjna {
+    min-height: 500px;
+    padding: 25px 0;
+}
+
+.podstrona-informacyjna h1 {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--kolor-ramki);
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.wstep-podstrony {
+    margin-bottom: 30px;
+    color: var(--kolor-tekstu-dodatkowego);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.sekcja-informacyjna {
+    margin: 25px 0;
+    padding: 20px;
+    border: 1px solid var(--kolor-ramki);
+    border-radius: 4px;
+    background-color: var(--kolor-tla-jasnego);
+}
+
+.sekcja-informacyjna h2 {
+    margin-top: 0;
+    font-size: 21px;
+    font-weight: normal;
+}
+
+.sekcja-informacyjna p {
+    line-height: 1.7;
+}
+
+.informacja-kontaktowa {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    border-top: 1px solid var(--kolor-ramki);
+}
+
+.informacja-kontaktowa i {
+    color: var(--kolor-linku);
+    font-size: 22px;
+}
+
+/* Tryb ciemny */
+
+.tryb-ciemny .sekcja-informacyjna {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo);
+}
+
+.tryb-ciemny .informacja-kontaktowa {
+    border-color: var(--ciemna-ramka);
+}
+
+
+/* ==================================================
+   28. DODATKOWE ELEMENTY POLITYKI PRYWATNOŚCI
+================================================== */
+
+.informacja-dodatkowa {
+    margin-top: 30px;
+    padding-top: 12px;
+    border-top: 1px solid var(--kolor-ramki);
+    color: var(--kolor-tekstu-dodatkowego);
+    font-size: 13px;
+}
+
+/* ==================================================
+   29. STRONA GŁÓWNA
+================================================== */
+
+.strona-glowna {
+    min-height: 500px;
+    padding: 25px 0;
+}
+
+.powitanie {
+    margin-bottom: 35px;
+    padding: 25px 0 30px;
+    border-bottom: 1px solid var(--kolor-ramki);
+}
+
+.powitanie h1 {
+    margin: 0 0 12px;
+    font-size: 32px;
+    font-weight: normal;
+}
+
+.powitanie p {
+    max-width: 1000px;
+    line-height: 1.7;
+}
+
+.powitanie .podtytul-glowny {
+    margin-bottom: 15px;
+    color: var(--kolor-tekstu-dodatkowego);
+    font-size: 19px;
+}
+
+.sekcja-glowna {
+    margin: 30px 0;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--kolor-ramki);
+}
+
+.sekcja-glowna h2 {
+    margin: 0 0 15px;
+    padding-bottom: 8px;
+    font-size: 23px;
+    font-weight: normal;
+    border-bottom: 1px solid var(--kolor-ramki);
+}
+
+.sekcja-glowna p {
+    line-height: 1.7;
+}
+
+.link-kategorie {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: 1px solid var(--kolor-linku);
+    border-radius: 3px;
+    background-color: var(--kolor-tla-jasnego);
+    color: var(--kolor-linku);
+    text-decoration: none;
+}
+
+.link-kategorie:hover {
+    background-color: var(--kolor-tla-szarego);
+    text-decoration: underline;
+}
+
+/* Tryb ciemny */
+
+.tryb-ciemny .powitanie {
+    border-color: var(--ciemna-ramka);
+}
+
+.tryb-ciemny .powitanie .podtytul-glowny {
+    color: var(--kolor-ramki);
+}
+
+.tryb-ciemny .sekcja-glowna {
+    border-color: var(--ciemna-ramka);
+}
+
+.tryb-ciemny .sekcja-glowna h2 {
+    border-color: var(--ciemna-ramka);
+}
+
+.tryb-ciemny .link-kategorie {
+    border-color: var(--ciemna-ramka);
+    background-color: var(--ciemne-tlo-hover);
+    color: #8ab4ff;
+}
+
+/* Responsywność */
+
+@media (max-width: 600px) {
+    .powitanie h1 {
+        font-size: 27px;
+    }
+
+    .powitanie .podtytul-glowny {
+        font-size: 17px;
+    }
+
+    .sekcja-glowna h2 {
+        font-size: 21px;
+    }
+}
+
+/* Linki w sekcji Pomoc */
+
+.linki-pomocy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.linki-pomocy a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--kolor-linku);
+    text-decoration: none;
+}
+
+.linki-pomocy a:hover {
+    text-decoration: underline;
+}
+
+/* Tryb ciemny */
+
+.tryb-ciemny .linki-pomocy a {
+    color: #8ab4ff;
+}
+
+/* Usunięcie odstępu na końcu strony głównej */
+
+.strona-glowna {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.sekcja-pomocy {
+    margin-bottom: 0;
+}
+
+/* Ostatnia sekcja bez dolnej kreski */
+
+.sekcja-pomocy {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+/* =========================================================
+   30. DRUKOWANIE ARTYKUŁU
+========================================================= */
+
+@media print {
+
+    /* Ukrycie wszystkich elementów strony */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Pokazanie wyłącznie zawartości main */
+    main,
+    main * {
+        visibility: visible;
+    }
+
+    /* Ustawienie artykułu na całej szerokości kartki */
+    main {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        box-sizing: border-box;
+        background: white;
+        color: black;
+    }
+
+    /* Usunięcie elementów interaktywnych z wydruku */
+    button,
+    input,
+    textarea,
+    select {
+        display: none !important;
+    }
+
+    /* Ustawienia strony drukowania */
+    @page {
+        size: A4;
+        margin: 15mm;
     }
 }

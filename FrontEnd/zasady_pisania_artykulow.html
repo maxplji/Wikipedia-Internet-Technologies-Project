@@ -1,0 +1,406 @@
+<!-- DO KOPIOWANIA -->
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Nazwa okna -->
+    <title>Utwórz nowe konto - Dynamopedia</title>
+
+    <!-- web-icon -->
+    <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
+
+    <!-- połączenie z CSS -->
+    <link rel="stylesheet" href="style_program.css">
+
+    <!-- połączenie z JS -->
+    <script src="scripts.js" defer></script>
+
+    <!-- połączenie z ikonkami -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="uklad-strony">
+
+        <!-- klasa zarządzająca lewą kolumną -->
+        <aside class="lewa-kolumna"></aside>
+
+        <!-- klasa zarządzająca ułożeniem treści na stronie -->
+        <div class="tresc-strony">
+
+        <header>
+            <div id="naglowek"></div>
+
+            <!-- skrypt tworzący nagłówek -->
+            <script>
+            fetch("header.html")
+                .then(response => response.text())
+                .then(html => {
+                document.getElementById("naglowek").innerHTML = html;
+
+                const przyciskMenu = document.getElementById("menu-toggle");
+                const panelMenu = document.getElementById("panel-menu");
+
+                przyciskMenu.addEventListener("click", function () {
+                    panelMenu.classList.toggle("otwarte");
+                });
+            });
+            </script>
+
+        </header>
+        
+        <!-- Klasa Navbar -->
+        <div id="navbar"></div>
+
+        <script>
+            fetch("navbar.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("navbar").innerHTML = html;
+                    zastosujUstawieniaWygladu();
+                });
+        </script>
+
+            
+        <!-- Główna strona -->
+        <main>
+
+            <!-- Wprowadzenie -->
+            <section class="pomoc-wprowadzenie">
+                <h1>Zasady pisania artykułów</h1>
+
+                <p>
+                    Dynamopedia jest encyklopedią poświęconą nauce
+                    o układach dynamicznych. Aby publikowane w niej
+                    artykuły były wartościowe, zrozumiałe i spójne,
+                    powinny spełniać określone zasady.
+                </p>
+
+                <p>
+                    Poniższy poradnik przedstawia najważniejsze
+                    wskazówki dotyczące przygotowywania i redagowania
+                    artykułów w Dynamopedii.
+                </p>
+            </section>
+
+            <!-- Tematyka artykułów -->
+            <section class="pomoc-sekcja">
+                <h2>Tematyka artykułów</h2>
+
+                <p>
+                    Artykuły publikowane w Dynamopedii powinny
+                    dotyczyć układów dynamicznych lub zagadnień
+                    bezpośrednio z nimi związanych.
+                </p>
+
+                <p>
+                    Mogą one opisywać między innymi pojęcia,
+                    definicje, twierdzenia, modele matematyczne,
+                    przykłady zastosowań oraz metody analizy
+                    układów dynamicznych.
+                </p>
+            </section>
+
+            <!-- Tytuł artykułu -->
+            <section class="pomoc-sekcja">
+                <h2>Tytuł artykułu</h2>
+
+                <p>
+                    Każdy artykuł powinien posiadać tytuł, który
+                    jednoznacznie określa jego temat. Powinien być
+                    krótki, konkretny i zgodny z treścią artykułu.
+                </p>
+
+                <p>
+                    Najlepiej stosować powszechnie przyjęte nazwy
+                    pojęć matematycznych i naukowych. Należy unikać
+                    niepotrzebnie długich tytułów, skrótów oraz
+                    określeń, które mogą być niezrozumiałe dla czytelnika.
+                </p>
+
+                <p>
+                    Przykładowe tytuły artykułów:
+                </p>
+
+                <ul>
+                    <li>Układ dynamiczny</li>
+                    <li>Punkt równowagi</li>
+                    <li>Stabilność układu dynamicznego</li>
+                    <li>Oscylator harmoniczny</li>
+                </ul>
+            </section>
+
+            <!-- Struktura artykułu -->
+            <section class="pomoc-sekcja">
+                <h2>Struktura artykułu</h2>
+
+                <p>
+                    Każdy artykuł powinien mieć logiczną i przejrzystą
+                    strukturę. Treść należy podzielić na odpowiednie
+                    sekcje, które ułatwiają czytelnikowi odnalezienie
+                    konkretnych informacji.
+                </p>
+
+                <p>
+                    Zaleca się rozpoczęcie artykułu od krótkiego
+                    wprowadzenia, które przedstawia opisywane
+                    zagadnienie. Następnie można przejść do bardziej
+                    szczegółowego omówienia tematu.
+                </p>
+
+                <p>
+                    W zależności od rodzaju artykułu warto uwzględnić:
+                </p>
+
+                <ul>
+                    <li><strong>Wprowadzenie</strong> – krótkie przedstawienie tematu.</li>
+                    <li><strong>Definicje</strong> – wyjaśnienie najważniejszych pojęć.</li>
+                    <li><strong>Opis matematyczny</strong> – wzory, równania i zależności, jeśli są potrzebne.</li>
+                    <li><strong>Przykłady</strong> – zastosowanie omawianych zagadnień.</li>
+                    <li><strong>Zastosowania</strong> – przedstawienie praktycznego znaczenia opisywanego tematu.</li>
+                    <li><strong>Źródła</strong> – wykaz materiałów wykorzystanych podczas tworzenia artykułu.</li>
+                </ul>
+
+                <p>
+                    Nie każdy artykuł musi zawierać wszystkie wymienione
+                    elementy. Jego struktura powinna być dostosowana
+                    do omawianego zagadnienia.
+                </p>
+            </section>
+
+            <!-- Treść artykułu -->
+            <section class="pomoc-sekcja">
+                <h2>Treść artykułu</h2>
+
+                <p>
+                    Treść artykułu powinna być zgodna z aktualną
+                    wiedzą naukową oraz przedstawiać opisywane
+                    zagadnienie w sposób rzetelny i zrozumiały.
+                    Należy unikać informacji niepotwierdzonych
+                    oraz stwierdzeń, które mogą wprowadzać
+                    czytelnika w błąd.
+                </p>
+
+                <p>
+                    Podczas pisania warto stosować język formalny,
+                    charakterystyczny dla tekstów naukowych.
+                    Należy unikać potocznych określeń, niepotrzebnych
+                    powtórzeń oraz zbyt długich i skomplikowanych zdań.
+                </p>
+
+                <p>
+                    Opisywane pojęcia powinny być wyjaśniane
+                    w sposób możliwie precyzyjny. Jeżeli temat
+                    jest trudny lub wymaga znajomości innych
+                    zagadnień, warto przedstawić niezbędne
+                    informacje wprowadzające.
+                </p>
+
+                <p>
+                    Należy również pamiętać o zachowaniu
+                    neutralnego punktu widzenia. Artykuły powinny
+                    przedstawiać wiedzę i fakty, a nie osobiste
+                    opinie autora.
+                </p>
+            </section>
+
+            <!-- Wzory matematyczne i oznaczenia -->
+            <section class="pomoc-sekcja">
+                <h2>Wzory matematyczne i oznaczenia</h2>
+
+                <p>
+                    W artykułach Dynamopedii można wykorzystywać
+                    wzory matematyczne, równania oraz symbole
+                    opisujące właściwości układów dynamicznych.
+                    Powinny być one zapisywane w sposób czytelny
+                    i zgodny z przyjętymi zasadami matematycznymi.
+                </p>
+
+                <p>
+                    Każdy wprowadzony symbol powinien zostać
+                    odpowiednio objaśniony. Czytelnik powinien
+                    wiedzieć, co oznaczają poszczególne zmienne,
+                    parametry oraz stałe występujące we wzorze.
+                </p>
+
+                <p>
+                    W przypadku bardziej złożonych równań warto
+                    przedstawić krótkie wyjaśnienie ich znaczenia
+                    oraz opisać warunki, w których mogą być stosowane.
+                </p>
+
+                <p>
+                    Należy również zachować spójność oznaczeń
+                    w całym artykule. Ten sam symbol nie powinien
+                    oznaczać różnych wielkości bez wyraźnego
+                    wyjaśnienia.
+                </p>
+            </section>
+
+            <!-- Źródła informacji -->
+            <section class="pomoc-sekcja">
+                <h2>Źródła informacji</h2>
+
+                <p>
+                    Artykuły publikowane w Dynamopedii powinny
+                    opierać się na wiarygodnych źródłach informacji.
+                    Korzystanie z materiałów naukowych pozwala
+                    zwiększyć rzetelność przedstawianej wiedzy
+                    oraz umożliwia czytelnikom samodzielne
+                    pogłębianie omawianych zagadnień.
+                </p>
+
+                <p>
+                    Podczas tworzenia artykułów zaleca się korzystanie
+                    przede wszystkim z:
+                </p>
+
+                <ul>
+                    <li>podręczników akademickich i książek naukowych,</li>
+                    <li>publikacji naukowych i artykułów badawczych,</li>
+                    <li>prac naukowych i materiałów konferencyjnych,</li>
+                    <li>wiarygodnych materiałów edukacyjnych przygotowanych przez uczelnie i instytucje naukowe.</li>
+                </ul>
+
+                <p>
+                    Należy unikać opierania artykułów na anonimowych
+                    wpisach internetowych, niesprawdzonych materiałach
+                    oraz treściach, których autorstwa lub wiarygodności
+                    nie można ustalić.
+                </p>
+
+                <p>
+                    Wykorzystane źródła powinny zostać wymienione
+                    na końcu artykułu. W miarę możliwości należy
+                    podać autora, tytuł publikacji, rok wydania
+                    oraz adres internetowy, jeżeli materiał
+                    jest dostępny online.
+                </p>
+            </section>
+
+            <!-- Zdjęcia i ilustracje -->
+            <section class="pomoc-sekcja">
+                <h2>Zdjęcia i ilustracje</h2>
+
+                <p>
+                    Artykuły w Dynamopedii mogą być uzupełniane
+                    materiałami wizualnymi, takimi jak zdjęcia,
+                    ilustracje, wykresy, schematy oraz diagramy.
+                    Pomagają one lepiej zrozumieć opisywane
+                    zagadnienia i przedstawiają informacje
+                    w bardziej przystępny sposób.
+                </p>
+
+                <p>
+                    Dodawane materiały powinny być bezpośrednio
+                    związane z tematyką artykułu oraz poprawnie
+                    przedstawiać opisywane zjawiska i zależności.
+                </p>
+
+                <p>
+                    Podczas dodawania grafik należy pamiętać o:
+                </p>
+
+                <ul>
+                    <li>wybieraniu materiałów dobrej jakości i odpowiedniej czytelności,</li>
+                    <li>stosowaniu grafik, do których wykorzystania posiada się odpowiednie prawa lub zgodę,</li>
+                    <li>podawaniu autora i źródła materiału, jeżeli jest to wymagane,</li>
+                    <li>umieszczaniu grafik w miejscach, w których pomagają zrozumieć treść artykułu,</li>
+                    <li>dodawaniu krótkich opisów wyjaśniających znaczenie ilustracji.</li>
+                </ul>
+
+                <p>
+                    Nie należy dodawać grafik wyłącznie w celach
+                    dekoracyjnych. Każdy materiał wizualny powinien
+                    mieć uzasadnienie merytoryczne i wnosić
+                    dodatkową wartość do artykułu.
+                </p>
+            </section>
+
+            <!-- Formatowanie tekstu -->
+            <section class="pomoc-sekcja">
+                <h2>Formatowanie tekstu</h2>
+
+                <p>
+                    Odpowiednie formatowanie tekstu pomaga zachować
+                    przejrzystość artykułu i ułatwia czytelnikom
+                    odnajdywanie najważniejszych informacji.
+                    Podczas edytowania artykułu można korzystać
+                    z dostępnych narzędzi formatowania.
+                </p>
+
+                <p>
+                    W Dynamopedii można wykorzystywać między innymi:
+                </p>
+
+                <ul>
+                    <li><strong>Pogrubienie</strong> – do wyróżniania ważnych pojęć i informacji.</li>
+                    <li><em>Kursywę</em> – do wyróżniania wybranych terminów lub oznaczeń.</li>
+                    <li><u>Podkreślenie</u> – do dodatkowego wyróżniania fragmentów tekstu, gdy jest to uzasadnione.</li>
+                    <li><strong>Nagłówki</strong> – do dzielenia artykułu na sekcje i podsekcje.</li>
+                    <li><strong>Listy</strong> – do uporządkowanego przedstawiania informacji.</li>
+                    <li><strong>Linki</strong> – do odsyłania do innych artykułów i przydatnych materiałów.</li>
+                </ul>
+
+                <p>
+                    Należy unikać nadmiernego formatowania.
+                    Wyróżnienia powinny być stosowane z umiarem
+                    i pełnić określoną funkcję, a nie utrudniać
+                    czytanie artykułu.
+                </p>
+            </section>
+
+            <!-- Na zakończenie -->
+            <section class="pomoc-sekcja">
+                <h2>Na zakończenie</h2>
+
+                <p>
+                    Tworzenie artykułów w Dynamopedii wymaga
+                    staranności, rzetelności oraz dbałości
+                    o poprawność przedstawianych informacji.
+                    Każdy artykuł powinien być napisany w sposób
+                    przejrzysty, zrozumiały i zgodny z tematyką
+                    naszej encyklopedii.
+                </p>
+
+                <p>
+                    Zachęcamy do korzystania z wiarygodnych źródeł,
+                    dokładnego wyjaśniania zagadnień matematycznych
+                    oraz systematycznego rozwijania i poprawiania
+                    istniejących artykułów.
+                </p>
+
+                <p>
+                    Pamiętaj, że każdy dobrze przygotowany artykuł
+                    przyczynia się do rozwoju Dynamopedii
+                    i pomaga innym użytkownikom poszerzać wiedzę
+                    o układach dynamicznych.
+                </p>
+            </section>
+
+        </main>
+
+        <!-- Klasa zarządzająca stopką -->
+        <div id="stopka"></div>
+
+        <script>
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("stopka").innerHTML = html;
+                })
+        </script>
+
+        </div>
+        
+        <!-- klasa zarządzająca prawą kolumną -->
+        <aside class="prawa-kolumna"></aside>
+    
+    </div>
+
+</body>
+</html>
