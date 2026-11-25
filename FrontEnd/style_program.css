@@ -1465,3 +1465,60 @@ body.tryb-ciemny {
         margin: 15mm;
     }
 }
+
+/* =========================================================
+   31. STRONA KATEGORII
+========================================================= */
+
+.strona-kategorii {
+    padding: 20px;
+}
+
+.kategorie-naglowek {
+    border-bottom: 1px solid var(--kolor-tekstu);
+    margin-bottom: 25px;
+}
+
+.kategorie-naglowek h1 {
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.strona-kategorii h2 {
+    font-size: 21px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.lista-kategorii,
+.lista-artykulow {
+    padding-left: 30px;
+}
+
+.lista-kategorii li,
+.lista-artykulow li {
+    margin: 8px 0;
+}
+
+.lista-kategorii a,
+.lista-artykulow a {
+    color: var(--kolor-linku);
+    text-decoration: none;
+}
+
+.lista-kategorii a:hover,
+.lista-artykulow a:hover {
+    text-decoration: underline;
+}
+
+.lista-artykulow h3 {
+    font-size: 19px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.brak-artykulow {
+    margin-top: 20px;
+    color: var(--kolor-tekstu);
+}

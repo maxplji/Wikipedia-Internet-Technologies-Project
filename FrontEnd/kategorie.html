@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kategorie - Dynamopedia</title>
+
+    <link rel="icon" type="image/png" href="Zdjęcia/litery_d_cz.jpg">
+    <link rel="stylesheet" href="style_program.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="scripts.js" defer></script>
+</head>
+
+<body>
+    <div class="uklad-strony">
+
+        <aside class="lewa-kolumna"></aside>
+
+        <div class="tresc-strony">
+
+            <header>
+                <div id="naglowek"></div>
+
+                <script>
+                    fetch("header.html")
+                        .then(response => response.text())
+                        .then(html => {
+                            document.getElementById("naglowek").innerHTML = html;
+
+                            const przyciskMenu = document.getElementById("menu-toggle");
+                            const panelMenu = document.getElementById("panel-menu");
+
+                            if (przyciskMenu && panelMenu) {
+                                przyciskMenu.addEventListener("click", function () {
+                                    panelMenu.classList.toggle("otwarte");
+                                });
+                            }
+                        });
+                </script>
+
+            </header>
+
+            <div id="navbar"></div>
+
+            <script>
+                fetch("navbar.html")
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById("navbar").innerHTML = html;
+                        zastosujUstawieniaWygladu();
+                    });
+            </script>
+
+            <main class="strona-kategorii">
+
+                <div class="kategorie-naglowek">
+                    <h1 id="tytul-kategorii">Kategorie</h1>
+                </div>
+
+                <section id="zawartosc-kategorii">
+                    <!-- Zawartość generowana przez kategorie.js -->
+                </section>
+
+            </main>
+
+            <div id="stopka"></div>
+
+            <script>
+                fetch("footer.html")
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById("stopka").innerHTML = html;
+                    });
+            </script>
+
+        </div>
+
+        <aside class="prawa-kolumna"></aside>
+
+    </div>
+</body>
+</html>

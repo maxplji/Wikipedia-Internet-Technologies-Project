@@ -593,3 +593,116 @@ document.addEventListener("click", function (event) {
         window.print();
     }
 });
+
+/* =========================================================
+   15. WYŚWIETLANIE KATEGORII I ARTYKUŁÓW
+========================================================= */
+
+const kategorie = [
+    "Układ elektryczny",
+    "Układ hydrauliczny",
+    "Układ mechaniczny",
+    "Klasyczna teoria sterowania"
+];
+
+// Na razie kategorie nie zawierają artykułów.
+// Później dane będą pobierane z PostgreSQL przez backend.
+const artykuly = [];
+
+const parametrKategorii = new URLSearchParams(window.location.search);
+const wybranaKategoria = parametrKategorii.get("kategoria");
+
+const tytul = document.getElementById("tytul-kategorii");
+const zawartosc = document.getElementById("zawartosc-kategorii");
+
+function sortujAlfabetycznie(elementy) {
+    return [...elementy].sort((a, b) =>
+        a.localeCompare(b, "pl", { sensitivity: "base" })
+    );
+}
+
+function wyswietlKategorie() {
+    tytul.textContent = "Kategorie";
+
+    const lista = document.createElement("ul");
+    lista.className = "lista-kategorii";
+
+    sortujAlfabetycznie(kategorie).forEach(kategoria => {
+        const element = document.createElement("li");
+        const link = document.createElement("a");
+
+        link.href = `kategorie.html?kategoria=${encodeURIComponent(kategoria)}`;
+        link.textContent = kategoria;
+
+        element.appendChild(link);
+        lista.appendChild(element);
+    });
+
+    zawartosc.replaceChildren(lista);
+}
+
+function wyswietlArtykuly(nazwaKategorii) {
+    tytul.textContent = `Kategoria: ${nazwaKategorii}`;
+
+    const naglowek = document.createElement("h2");
+    naglowek.textContent = `Strony w kategorii „${nazwaKategorii}”`;
+
+    const opis = document.createElement("p");
+    opis.textContent = "Poniżej znajduje się lista artykułów przypisanych do tej kategorii.";
+
+    const lista = document.createElement("ul");
+    lista.className = "lista-artykulow";
+
+    const pasujaceArtykuly = sortujAlfabetycznie(
+        artykuly.filter(artykul =>
+            artykul.kategoria === nazwaKategorii
+        )
+    );
+
+    if (pasujaceArtykuly.length === 0) {
+        const informacja = document.createElement("p");
+        informacja.className = "brak-artykulow";
+        informacja.textContent = "W tej kategorii nie ma jeszcze żadnych artykułów.";
+
+        zawartosc.replaceChildren(naglowek, opis, informacja);
+        return;
+    }
+
+    let poprzedniaLitera = "";
+
+    pasujaceArtykuly.forEach(artykul => {
+        const pierwszaLitera = artykul.tytul.charAt(0).toLocaleUpperCase("pl");
+
+        if (pierwszaLitera !== poprzedniaLitera) {
+            const naglowekLitery = document.createElement("h3");
+            naglowekLitery.textContent = pierwszaLitera;
+            lista.appendChild(naglowekLitery);
+
+            poprzedniaLitera = pierwszaLitera;
+        }
+
+        const element = document.createElement("li");
+        const link = document.createElement("a");
+
+        link.href = `artykul.html?tytul=${encodeURIComponent(artykul.tytul)}`;
+        link.textContent = artykul.tytul;
+
+        element.appendChild(link);
+        lista.appendChild(element);
+    });
+
+    zawartosc.replaceChildren(naglowek, opis, lista);
+}
+
+if (wybranaKategoria && kategorie.includes(wybranaKategoria)) {
+    wyswietlArtykuly(wybranaKategoria);
+} else if (wybranaKategoria) {
+    tytul.textContent = "Nie znaleziono kategorii";
+
+    const informacja = document.createElement("p");
+    informacja.textContent = "Wybrana kategoria nie istnieje.";
+
+    zawartosc.replaceChildren(informacja);
+} else {
+    wyswietlKategorie();
+}
