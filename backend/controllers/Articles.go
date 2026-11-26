@@ -33,8 +33,17 @@ func getArticleID(c *gin.Context) (uint64, bool) {
 func (h *DBS) GetArticles(c *gin.Context) {
 	var articles []models.Article
 
-	err := h.DB.
+	fraza := strings.TrimSpace(c.Query("q"))
+
+	query := h.DB.
 		Preload("Images").
+		Where("status = ?", "published")
+
+	if fraza != "" {
+		query = query.Where("title ILIKE ?", "%"+fraza+"%")
+	}
+
+	err := h.DB.
 		Order("id DESC").
 		Limit(100).
 		Find(&articles).Error
@@ -62,6 +71,7 @@ func (h *DBS) GetArticle(c *gin.Context) {
 
 	err := h.DB.
 		Preload("Images").
+		Where("status = ?", "published").
 		First(&article, id).Error
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -131,6 +141,7 @@ func (h *DBS) CreateArticle(c *gin.Context) {
 		Content:  input.Content,
 		AuthorID: uint(userID),
 		Images:   []models.ArticleImage{},
+		Status:   "pending",
 	}
 
 	if err := h.DB.Create(&article).Error; err != nil {

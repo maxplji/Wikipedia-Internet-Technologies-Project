@@ -10,6 +10,7 @@ type Article struct {
 	Images    []ArticleImage `gorm:"foreignKey:ArticleID;constraint:OnDelete:CASCADE;" json:"images"`
 	CreatedAt time.Time      `json:"created_at"`
 	UpdatedAt time.Time      `json:"updated_at"`
+	Status    string         `gorm:"not null;default:published;index" json:"status"`
 }
 type ArticleImage struct {
 	ID        uint   `gorm:"primaryKey" json:"id"`
