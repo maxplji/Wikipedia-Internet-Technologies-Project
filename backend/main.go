@@ -119,6 +119,13 @@ func main() {
 		)
 	}
 
+	// Akceptacja artykulow przez administratora
+	admin := r.Group("/admin", middlewares.JWTAuth(), handler.RequireAdmin())
+	{
+		admin.GET("/articles/pending", handler.GetPendingArticles)
+		admin.POST("/articles/:id/approve", handler.ApproveArticle)
+	}
+
 	port := os.Getenv("PORT")
 
 	if port == "" {

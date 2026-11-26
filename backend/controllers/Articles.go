@@ -43,7 +43,7 @@ func (h *DBS) GetArticles(c *gin.Context) {
 		query = query.Where("title ILIKE ?", "%"+fraza+"%")
 	}
 
-	err := h.DB.
+	err := query.
 		Order("id DESC").
 		Limit(100).
 		Find(&articles).Error

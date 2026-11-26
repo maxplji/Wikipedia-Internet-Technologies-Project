@@ -8,4 +8,5 @@ type User struct {
 	Username     string    `gorm:"uniqueIndex;not null"`
 	PasswordHash string    `gorm:"not null" json:"-"`
 	Stworzony    time.Time `gorm:"autoCreateTime"`
+	IsAdmin      bool      `gorm:"not null;default:false" json:"-"`
 }
